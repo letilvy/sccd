@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>SAL CI/CD Dashboard Application</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+		
+		<style>
+			#busyIndicator { margin-top:8em; text-align:center; color:#555555 }
+			.sapMPage>section { height:100% }
+		</style>
+		
+		<script src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js" 
+				id="sap-ui-bootstrap"
+				data-sap-ui-theme="sap_belize"
+				data-sap-ui-libs="sap.m,sap.ui.layout"
+				data-sap-ui-xx-bindingSyntax="complex">
+		</script>
+		
+		<script>			
+			// Register platform module path as local resource
+			jQuery.sap.registerModulePath("sap.support.sccd", (window.location.hostname.indexOf("ondemand.com", window.location.hostname.length - "ondemand.com".length) !== -1)?
+				"/" : "./");
+			
+			// Cloud session handling
+			var fnComplete; jQuery(document).ajaxComplete(fnComplete=function(oEvent, oXHR){
+				if(oXHR.getResponseHeader("com.sap.cloud.security.login")==="login-request"){
+					alert("Browser session expired. Page will be reloaded.");
+					window.location.reload();
+				}
+			});
+
+			// Create the tools page and place it at the content 
+			sap.ui.getCore().attachInit(function(){
+				sap.ui.require([
+					"sap/ui/core/ComponentContainer"
+				], function(ComponentContainer){
+					// initialize the UI component
+					new ComponentContainer({
+						height: "100%",
+						name: "sap.support.sccd",
+						settings: {
+							id: "appContainer"
+						}
+					}).placeAt("content");
+				});
+			});
+		</script>
+	</head>
+	
+	<body class="sapUiBody" id="content" role="application">
+		<div id="busyIndicator">Loading...</div>
+	</body>
+</html>

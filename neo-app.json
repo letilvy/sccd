@@ -1,0 +1,87 @@
+{
+  "welcomeFile": "/index.html",
+  "headerWhiteList": [
+    "X-HTTP-Method"
+  ],
+  "routes": [
+    {
+      "path": "/webapp/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/webapp/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    
+    {
+      "path": "/services/odata",
+      "target": {
+        "type": "destination",
+        "name": "SMP_NG_WEB",
+        "entryPath": "/odata"
+      },
+      "description": "OData Gateway"
+    },
+    {
+      "path": "/services/xse",
+      "target": {
+        "type": "destination",
+        "name": "SMP_NG_XS"
+      },
+      "description": "XS Engine"
+    },
+    {
+      "path": "/services/cloud/xse",
+      "target": {
+        "type": "destination",
+        "name": "CLOUD_XS"
+      },
+      "description": "Cloud XS Engine"
+    },
+    {
+      "path": "/services/cb/web",
+      "target": {
+        "type": "destination",
+        "name": "CB_WEB"
+      },
+      "description": "DBS Support Technology Cloud Services (Calculation Backend)"
+    }
+  ],
+  "securityConstraints": [
+    {
+      "permission": "AccessApplicationDescriptor",
+      "description": "Access application descriptor file (neo-app.json)",
+      "protectedPaths": [
+        "/neo-app.json"
+      ]
+    }
+  ]
+}
