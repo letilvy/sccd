@@ -3,6 +3,14 @@
 	xmlns="sap.m"
 	controllerName="sap.support.sccd.controller.Menu"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page>		
+	<Page>
+		<Tree
+			items="{
+				path: 'menu>/'
+			}">
+			<StandardTreeItem
+                title="{text}"
+				icon="{ref}"/>
+		</Tree>
 	</Page>
 </mvc:View>
