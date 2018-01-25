@@ -80,6 +80,10 @@
 				"settings": {
 					"bundleName": "sap.support.sccd.i18n.i18n"
 				}
+			},
+			"menu": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/menu.json"
 			}
 		},
 		"routing": {
@@ -96,11 +100,20 @@
 					"pattern": "",
 					"name": "master",
 					"target": ["master"]
+				},
+				{
+					"pattern": "home",
+					"name": "home",
+					"target": ["master", "home"]
 				}
 			],
 			"targets": {
 				"master": {
 					"viewName": "Menu",
+					"controlAggregation": "masterPages"
+				},
+				"home": {
+					"viewName": "Home",
 					"controlAggregation": "detailPages"
 				}
 			}

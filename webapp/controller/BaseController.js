@@ -6,16 +6,20 @@ sap.ui.define([
 	
 	return Controller.extend("sap.support.sccd.controller.BaseController", {
 		
+		getRouter: function(){
+			return sap.ui.core.UIComponent.getRouterFor(this);
+		},
+
 		getModel: function(sName){
-			return sap.getOwnerComponent().getModel(sName);
+			return this.getOwnerComponent().getModel(sName);
 		},
 		
 		setModel: function(oModel, sName){
-			return sap.getOwnerComponent().setModel(oModel, sName);
+			return this.getOwnerComponent().setModel(oModel, sName);
 		},
 		
 		getResourceBundle: function () {
-			return sap.getOwnerComponent().getModel("i18n").getResourceBundle();
+			return this.getOwnerComponent().getModel("i18n").getResourceBundle();
 		}
 	
 	});

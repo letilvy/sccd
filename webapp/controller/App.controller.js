@@ -3,7 +3,7 @@ sap.ui.define([
 ], function(BaseController){
 	"use strict";
 
-	BaseController.extend("sap.support.sccd.controller.App", {
+	return BaseController.extend("sap.support.sccd.controller.App", {
 
 	});
 });

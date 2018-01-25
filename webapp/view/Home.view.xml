@@ -1,0 +1,68 @@
+<mvc:View xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:mc="sap.suite.ui.microchart"
+	controllerName="sap.support.sccd.controller.Home"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<!-- <Page> -->
+		<HeaderContainer id="hc" showDividers="true" scrollStep="200"
+						scrollTime="500">
+			<!-- <VBox alignItems="Center"
+				justifyContent="Center">
+				<Title
+					text="Total Projects"
+					class="sapUiTinyMargin" />
+				<VBox width="5rem" height="5rem">
+					<NumericContent value="25"
+						valueColor="Neutral" indicator="None" icon="sap-icon://sap-ui5"
+						/>
+				</VBox>
+			</VBox>
+
+			<VBox alignItems="Center"
+				justifyContent="Center">
+				<Title
+					text="Top 3 Active"
+					class="sapUiTinyMargin" />
+				<VBox>
+					<mc:ComparisonMicroChart
+						isResponsive="true"
+						data="{kpi>/TopActive}">
+						<mc:data>
+							<mc:ComparisonMicroChartData
+								title="{kpi>ProjectName}"
+								value="{kpi>TotalCase}"
+								displayValue="{kpi>TotalCase}"
+								color="Good" />
+						</mc:data>
+					</mc:ComparisonMicroChart>
+				</VBox>
+			</VBox> -->
+
+			<TileContent unit="" footer="Total Projects">
+				<content>
+					<NumericContent value="{kpi>/TotalProjects}"
+						valueColor="Neutral"
+						indicator="None"
+						icon="sap-icon://sap-ui5" />
+				</content>
+			</TileContent>
+			<TileContent unit="" footer="Top 3 Active">
+				<content>
+					<mc:ComparisonMicroChart id="cmc"
+						isResponsive="true"
+						data="{kpi>/TopActive}">
+						<mc:data>
+							<mc:ComparisonMicroChartData
+								title="{kpi>ProjectName}"
+								value="{kpi>TotalCase}"
+								displayValue="{kpi>TotalCase}"
+								color="Good" />
+						</mc:data>
+					</mc:ComparisonMicroChart>
+				</content>
+			</TileContent>
+
+		</HeaderContainer>
+	<!-- </Page> -->
+</mvc:View>
