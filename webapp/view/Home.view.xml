@@ -5,26 +5,17 @@
 	controllerName="sap.support.sccd.controller.Home"
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<!-- <Page> -->
-		<HeaderContainer id="hc" showDividers="true" scrollStep="200"
-						scrollTime="500">
-			<!-- <VBox alignItems="Center"
-				justifyContent="Center">
-				<Title
-					text="Total Projects"
-					class="sapUiTinyMargin" />
-				<VBox width="5rem" height="5rem">
-					<NumericContent value="25"
-						valueColor="Neutral" indicator="None" icon="sap-icon://sap-ui5"
-						/>
-				</VBox>
-			</VBox>
-
-			<VBox alignItems="Center"
-				justifyContent="Center">
-				<Title
-					text="Top 3 Active"
-					class="sapUiTinyMargin" />
-				<VBox>
+		<HeaderContainer showDividers="true">
+			<TileContent footer="Total Projects">
+				<content>
+					<NumericContent value="{kpi>/TotalProjects}"
+						valueColor="Neutral"
+						indicator="None"
+						icon="sap-icon://sap-ui5" />
+				</content>
+			</TileContent>
+			<TileContent unit="" footer="Top 3 Active">
+				<content>
 					<mc:ComparisonMicroChart
 						isResponsive="true"
 						data="{kpi>/TopActive}">
@@ -36,30 +27,67 @@
 								color="Good" />
 						</mc:data>
 					</mc:ComparisonMicroChart>
-				</VBox>
-			</VBox> -->
-
-			<TileContent unit="" footer="Total Projects">
-				<content>
-					<NumericContent value="{kpi>/TotalProjects}"
-						valueColor="Neutral"
-						indicator="None"
-						icon="sap-icon://sap-ui5" />
 				</content>
 			</TileContent>
-			<TileContent unit="" footer="Top 3 Active">
+			<TileContent footer="Healthy UT Projects">
 				<content>
-					<mc:ComparisonMicroChart id="cmc"
+					<mc:DeltaMicroChart
 						isResponsive="true"
-						data="{kpi>/TopActive}">
-						<mc:data>
-							<mc:ComparisonMicroChartData
-								title="{kpi>ProjectName}"
-								value="{kpi>TotalCase}"
-								displayValue="{kpi>TotalCase}"
-								color="Good" />
-						</mc:data>
-					</mc:ComparisonMicroChart>
+						color="Error"
+						value1="{kpi>/TotalProjects}"
+						value2="{kpi>/HealthyUTProjects}"
+						title1="{i18n>titleTotal}"
+						title2="{i18n>titleUnhealthyUTProject}"
+						displayValue1="{kpi>/TotalProjects}"
+						displayValue2="{kpi>/HealthyUTProjects}"
+						deltaDisplayValue="{
+							parts: [
+								'kpi>/TotalProjects',
+								'kpi>/HealthyUTProjects'
+							],
+							formatter: '.getValuesDelta'
+						}" />
+				</content>
+			</TileContent>
+			<TileContent footer="UT Case Number">
+				<content>
+					<mc:LineMicroChart
+						size="Responsive"
+						threshold="{kpi>/fillLevel/threshold}"
+						leftTopLabel="{kpi>/fillLevel/valueBegin}"
+						leftBottomLabel="{kpi>/fillLevel/timeBegin}"
+						rightTopLabel="{kpi>/fillLevel/valueEnd}"
+						rightBottomLabel="{kpi>/fillLevel/timeEnd}"
+						color="{kpi>/fillLevel/color}"
+						showPoints="true"
+						points="{
+							path: 'kpi>/fillLevel/timeSeries',
+							templateShareable: true
+						}">
+						<mc:LineMicroChartPoint
+							x="{kpi>time}"
+							y="{kpi>level}" />
+					</mc:LineMicroChart>
+				</content>
+			</TileContent>
+			<TileContent footer="Healthy IT Projects">
+				<content>
+					<mc:DeltaMicroChart
+						isResponsive="true"
+						color="Critical"
+						value1="{kpi>/TotalProjects}"
+						value2="{kpi>/HealthyITProjects}"
+						title1="{i18n>titleTotal}"
+						title2="{i18n>titleUnhealthyITProject}"
+						displayValue1="{kpi>/TotalProjects}"
+						displayValue2="{kpi>/HealthyITProjects}"
+						deltaDisplayValue="{
+							parts: [
+								'kpi>/TotalProjects',
+								'kpi>/HealthyITProjects'
+							],
+							formatter: '.getValuesDelta'
+						}" />
 				</content>
 			</TileContent>
 
