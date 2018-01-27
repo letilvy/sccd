@@ -1,36 +1,20 @@
 [
 	{
+		"route": "home",
+		"routeParam": null,
 		"text": "Home",
 		"ref": "sap-icon://home"
 	},
 	{
+		"route": "utOverview",
+		"routeParam": null,
 		"text": "Unit Test",
-		"ref": "sap-icon://badge",
-		"nodes":
-		[
-			{
-				"text": "Case Number",
-				"ref": "sap-icon://business-by-design"
-			},
-			{
-				"text": "Code Coverage",
-				"ref": "sap-icon://puzzle"
-			}
-		]
+		"ref": "sap-icon://badge"
 	},
 	{
+		"route": "itOverview",
+		"routeParam": null,
 		"text": "Integration Test",
-		"ref": "sap-icon://machine",
-		"nodes":
-		[
-			{
-				"text": "Case Number",
-				"ref": "sap-icon://business-by-design"
-			},
-			{
-				"text": "Code Coverage",
-				"ref": "sap-icon://puzzle"
-			}
-		]
+		"ref": "sap-icon://machine"
 	}
 ]

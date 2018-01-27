@@ -6,6 +6,11 @@ sap.ui.define([
 
 	return BaseController.extend("sap.support.sccd.controller.Menu", {
 		onInit: function(){
+		},
+
+		onPressMenuItem: function(oEvent){
+			var oMenuItem = oEvent.getParameter("listItem").getBindingContext("menu").getObject();
+			this.getRouter().navTo(oMenuItem.route, oMenuItem.routeParam);
 		}
 	});
 });

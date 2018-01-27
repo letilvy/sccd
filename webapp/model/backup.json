@@ -1,0 +1,36 @@
+[
+	{
+		"text": "Home",
+		"ref": "sap-icon://home"
+	},
+	{
+		"text": "Unit Test",
+		"ref": "sap-icon://badge",
+		"nodes":
+		[
+			{
+				"text": "Case Number",
+				"ref": "sap-icon://business-by-design"
+			},
+			{
+				"text": "Code Coverage",
+				"ref": "sap-icon://puzzle"
+			}
+		]
+	},
+	{
+		"text": "Integration Test",
+		"ref": "sap-icon://machine",
+		"nodes":
+		[
+			{
+				"text": "Case Number",
+				"ref": "sap-icon://business-by-design"
+			},
+			{
+				"text": "Code Coverage",
+				"ref": "sap-icon://puzzle"
+			}
+		]
+	}
+]

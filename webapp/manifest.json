@@ -105,15 +105,37 @@
 					"pattern": "home",
 					"name": "home",
 					"target": ["master", "home"]
+				},
+				{
+					"pattern": "utOverview",
+					"name": "utOverview",
+					"target": ["master", "utoverview"]
+				},
+				{
+					"pattern": "itOverview",
+					"name": "itOverview",
+					"target": ["master", "itoverview"]
 				}
 			],
 			"targets": {
 				"master": {
 					"viewName": "Menu",
+					"viewLevel": 0,
 					"controlAggregation": "masterPages"
 				},
 				"home": {
 					"viewName": "Home",
+					"viewLevel": 0,
+					"controlAggregation": "detailPages"
+				},
+				"utoverview": {
+					"viewName": "ut.UTOverview",
+					"viewLevel": 1,
+					"controlAggregation": "detailPages"
+				},
+				"itoverview": {
+					"viewName": "it.ITOverview",
+					"viewLevel": 1,
 					"controlAggregation": "detailPages"
 				}
 			}
