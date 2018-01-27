@@ -4,6 +4,8 @@ sap.ui.define([
 	"use strict";
 
 	return BaseController.extend("sap.support.sccd.controller.App", {
-
+		onInit: function(){
+			this.getView().setDisplayBlock(true);
+		}
 	});
 });

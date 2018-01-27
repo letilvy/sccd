@@ -4,15 +4,23 @@
 	controllerName="sap.support.sccd.controller.Menu"
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page>
-		<Tree
-			mode="SingleSelectMaster"
-			selectionChange="onPressMenuItem"
-			items="{
-				path: 'menu>/'
-			}">
-			<StandardTreeItem
-                title="{menu>text}"
-				icon="{menu>ref}" />
-		</Tree>
+		<customHeader>
+			<Toolbar>
+				<SearchField liveChange="onSearchMenu"/>
+				<Button type="Transparent" icon="sap-icon://action-settings" press="onConfig"/>
+			</Toolbar>
+		</customHeader>
+		<content>
+			<Tree id="tree_menu"
+				mode="SingleSelectMaster"
+				selectionChange="onPressMenuItem"
+				items="{
+					path: 'menu>/'
+				}">
+				<StandardTreeItem
+	                title="{menu>text}"
+					icon="{menu>ref}" />
+			</Tree>
+		</content>
 	</Page>
 </mvc:View>

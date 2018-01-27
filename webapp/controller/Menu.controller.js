@@ -1,11 +1,24 @@
 sap.ui.define([
 	"sap/support/sccd/controller/BaseController",
-	"sap/ui/model/json/JSONModel"
-], function(BaseController, JSONModel){
+	"sap/ui/model/json/JSONModel",
+	"sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator"
+], function(BaseController, JSONModel, Filter, FilterOperator){
 	"use strict";
 
 	return BaseController.extend("sap.support.sccd.controller.Menu", {
 		onInit: function(){
+		},
+
+		onSearchMenu: function(oEvent){
+			var sTerm = oEvent.getParameter("newValue");
+			this.byId("tree_menu").getBinding("items").filter(
+				sTerm?[new Filter("text", FilterOperator.Contains, sTerm)]:[]
+			);
+		},
+
+		onConfig: function(){
+
 		},
 
 		onPressMenuItem: function(oEvent){
