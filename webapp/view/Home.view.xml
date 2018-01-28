@@ -1,9 +1,7 @@
-<mvc:View xmlns:core="sap.ui.core"
+<mvc:View controllerName="sap.support.sccd.controller.Home"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:mc="sap.suite.ui.microchart"
-	controllerName="sap.support.sccd.controller.Home"
-	xmlns:html="http://www.w3.org/1999/xhtml">
+	xmlns:mc="sap.suite.ui.microchart">
 	<!-- <Page> -->
 		<HeaderContainer showDividers="true">
 			<TileContent footer="Total Projects">

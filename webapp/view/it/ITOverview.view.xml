@@ -1,16 +1,32 @@
-<mvc:View xmlns:core="sap.ui.core"
+<mvc:View controllerName="sap.support.sccd.controller.it.ITOverview"
+	xmlns="sap.suite.ui.commons"
+	xmlns:m="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m"
-	controllerName="sap.support.sccd.controller.it.ITOverview"
-	xmlns:html="http://www.w3.org/1999/xhtml">
-	<!-- <Page> -->
-		<Tree
-			items="{
-				path: 'menu>/'
-			}">
-			<StandardTreeItem
-                title="{menu>text}"
-				icon="{menu>ref}" />
-		</Tree>
-	<!-- </Page> -->
+	xmlns:viz="sap.viz.ui5.controls">
+	
+	<ChartContainer 
+		showFullScreen="true"
+		showPersonalization="false"
+		autoAdjustHeight="false"
+		showSelectionDetails="false">		
+		<content>
+			<ChartContainerContent
+				icon="sap-icon://bar-chart"
+				title="{i18n>tooltipChartView}">
+				<content>
+					<viz:VizFrame 
+						height="100%"
+						width="100%"
+						uiConfig="{applicationSet:'fiori'}"/>
+				</content>
+			</ChartContainerContent>
+			<ChartContainerContent
+				icon="sap-icon://table-view"
+				title="{i18n>tooltipTableView}">
+				<content>
+					<m:Table/>
+				</content>
+			</ChartContainerContent>
+		</content>
+	</ChartContainer>
 </mvc:View>

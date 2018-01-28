@@ -84,6 +84,14 @@
 			"menu": {
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/menu.json"
+			},
+			"utoverview": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/ut.json"
+			},
+			"itoverview": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/it.json"
 			}
 		},
 		"routing": {
