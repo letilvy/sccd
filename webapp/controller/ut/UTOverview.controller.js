@@ -24,30 +24,33 @@ sap.ui.define([
 						dimensions: [{
 							name: "Project",
 							value: "{pid}"
+						}, {
+							name: "Type",
+							value: "{type}"
 						}],
 						measures: [{
-							name: "Passed",
-							value: "{passed}"
-						}, {
+							name: "Case",
+							value: "{case}"
+						}/*, {
 							name: "Failed",
 							value: "{failed}"
-						}],
+						}*/],
 						data: {
 							path: "/"
 						}
 					},
 					feedItems: [{
-						uid: "primaryValues",
+						uid: "valueAxis",
 						type: "Measure",
-						values: ["Passed"]
+						values: ["Case"]
 					}, {
-						uid: "axisLabels",
+						uid: "categoryAxis",
 						type: "Dimension",
 						values: ["Project"]
 					}, {
-						uid: "targetValues",
-						type: "Measure",
-						values: ["Failed"]
+						uid: "color",
+						type: "Dimension",
+						values: ["Type"]
 					}],
 					vizType: "stacked_bar"
 				}
@@ -55,13 +58,27 @@ sap.ui.define([
 		},
 
 		onInit: function(){
-			var oVizFrame = this.createVizFrame(this.getModel("utoverview"), this._constantsUT.charts.ut);
+			var aStackBarData = this.transformToStackBarData(this.getModel("utoverview").getData());
+			var oVizFrame = this.createVizFrame(new JSONModel(aStackBarData), this._constantsUT.charts.ut);
 			var oTable = this.createTable(this.getModel("utoverview"), this._constantsUT.table);
 
-			var oContent1 = this.createChartContainerContent(oVizFrame);
+			var oContent1 = this.createChartContainerContent(oVizFrame, "sap-icon://horizontal-stacked-chart");
 			var oContent2 = this.createChartContainerContent(oTable, "sap-icon://table-view", "{i18n>tooltipTableView}");
 
 			this.updateChartContainerContent(this.getView().byId("cc_ut"), [oContent1, oContent2]);
+		},
+
+		transformToStackBarData: function(aProjectCase){
+			var aStackBarData = [];
+			aProjectCase.forEach(function(oProjectCase){
+				oProjectCase.case = oProjectCase.failed;
+				oProjectCase.type = "Failed";
+				aStackBarData.push(jQuery.extend(true, {}, oProjectCase));
+				oProjectCase.case = oProjectCase.passed;
+				oProjectCase.type = "Passed";
+				aStackBarData.push(jQuery.extend(true, {}, oProjectCase));
+			});
+			return aStackBarData;
 		}
 
 	});

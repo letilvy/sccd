@@ -2,32 +2,40 @@
 	xmlns="sap.suite.ui.commons"
 	xmlns:m="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout"
 	xmlns:viz="sap.viz.ui5.controls">
 	
-	<ChartContainer
-		id="cc_ut"
-		showFullScreen="true"
-		showPersonalization="false"
-		autoAdjustHeight="false"
-		showSelectionDetails="false">		
-		<content>
-			<ChartContainerContent
-				icon="sap-icon://bar-chart"
-				title="{i18n>tooltipChartView}">
+	<layout:FixFlex>
+		<layout:fixContent>
+			<m:Text text="Fixed Content"></m:Text>
+		</layout:fixContent>
+		<layout:flexContent>
+			<ChartContainer
+				id="cc_ut"
+				showFullScreen="true"
+				showPersonalization="false"
+				autoAdjustHeight="false"
+				showSelectionDetails="false">		
 				<content>
-					<viz:VizFrame 
-						height="100%"
-						width="100%"
-						uiConfig="{applicationSet:'fiori'}"/>
+					<ChartContainerContent
+						icon="sap-icon://bar-chart"
+						title="{i18n>tooltipChartView}">
+						<content>
+							<viz:VizFrame 
+								height="100%"
+								width="100%"
+								uiConfig="{applicationSet:'fiori'}"/>
+						</content>
+					</ChartContainerContent>
+					<ChartContainerContent
+						icon="sap-icon://table-view"
+						title="{i18n>tooltipTableView}">
+						<content>
+							<m:Table/>
+						</content>
+					</ChartContainerContent>
 				</content>
-			</ChartContainerContent>
-			<ChartContainerContent
-				icon="sap-icon://table-view"
-				title="{i18n>tooltipTableView}">
-				<content>
-					<m:Table/>
-				</content>
-			</ChartContainerContent>
-		</content>
-	</ChartContainer>
+			</ChartContainer>
+		</layout:flexContent>
+	</layout:FixFlex>
 </mvc:View>
