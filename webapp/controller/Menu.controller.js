@@ -1,5 +1,5 @@
 sap.ui.define([
-	"sap/support/sccd/controller/BaseController",
+	"sap/support/sccd/controller/base/BaseController",
 	"sap/ui/model/json/JSONModel",
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator"

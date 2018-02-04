@@ -1,3 +1,6 @@
+/**
+	This controller currently is not in used. Its functionality is token place by xml fragement which saves more logic of controller.
+*/
 sap.ui.define([
 	"sap/support/sccd/controller/BaseController",
 	"sap/suite/ui/commons/ChartContainer",
@@ -12,13 +15,77 @@ sap.ui.define([
 ], function(BaseController, ChartContainer, ChartContainerContent, VizFrame, FeedItem, FlattenedDataset, 
 			Table, Column, ColumnListItem, Label){
 	"use strict";
+
+	/**
+	* How to use this controller:
+	*
+	(1) Create a view with a sap.suite.ui.commons.ChartContainer control. Suppose the id of chart container is "cc_ut";
+	(2) Create controller of the above view. The new controller inherit from this ChartController class. Suppose new controller named UTOverview; 
+	(3) ChartController.extend("sap.support.sccd.controller.ut.UTOverview", {
+
+			_constantsUT: {
+				chartContainerId: "cc_ut",
+				table: {
+					icon: "sap-icon://table-view",
+					title: "{i18n>tooltipTableView}",
+					itemBindingPath: "/",
+					columnLabelTexts: ["Project Name", "Passed", "Failed", "Skipped", "Assertion"],
+					templateCellLabelTexts: ["{pid}", "{passed}", "{failed}", "{skipped}", "{assertion}"]
+				},
+				charts: {
+					ut: {
+						icon: "sap-icon://horizontal-stacked-chart",
+						title: "{i18n>tooltipChartView}",
+						dataPath: "/",
+						dataset: {
+							dimensions: [{
+								name: "Project",
+								value: "{pid}"
+							}],
+							measures: [{
+								name: "Passed",
+								value: "{passed}"
+							}, {
+								name: "Failed",
+								value: "{failed}"
+							}],
+							data: {
+								path: "/"
+							}
+						},
+						feedItems: [{
+							uid: "valueAxis",
+							type: "Measure",
+							values: ["Passed", "Failed"]
+						}, {
+							uid: "categoryAxis",
+							type: "Dimension",
+							values: ["Project"]
+						}],
+						vizType: "stacked_bar"
+					}
+				}
+			},
+
+			onInit: function(){
+				var oVizFrame = this.createVizFrame(this.getModel("utoverview"), this._constantsUT.charts.ut);
+				var oTable = this.createTable(this.getModel("utoverview"), this._constantsUT.table);
+
+				var oContentChart = this.createChartContainerContent(oVizFrame, "sap-icon://horizontal-stacked-chart");
+				var oContentTable = this.createChartContainerContent(oTable, "sap-icon://table-view", "{i18n>tooltipTableView}");
+
+				this.updateChartContainerContent(this.getView().byId("cc_ut"), [oContentChart, oContentTable]);
+			}
+
+		});
+	**/
 	
 	return BaseController.extend("sap.support.sccd.controller.ChartController", {
 		
 		_constants: {
 			vizFrames: {
 				config: {
-					height: "100%",
+					height: "700px",
 					width: "100%",
 					uiConfig: {
 						applicationSet: "fiori"

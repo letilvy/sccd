@@ -1,0 +1,33 @@
+<core:FragmentDefinition
+	xmlns="sap.suite.ui.commons"
+	xmlns:m="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:viz="sap.viz.ui5.controls">
+	<ChartContainer
+		id="cc_ov"
+		showFullScreen="true"
+		showPersonalization="false"
+		autoAdjustHeight="true"
+		showSelectionDetails="false">		
+		<content>
+			<ChartContainerContent
+				icon="sap-icon://bar-chart"
+				title="{i18n>tooltipChartView}">
+				<content>
+					<viz:VizFrame 
+						height="100%"
+						width="100%"
+						vizType="stacked_bar"
+						uiConfig="{applicationSet:'fiori'}"/>
+				</content>
+			</ChartContainerContent>
+			<ChartContainerContent
+				icon="sap-icon://table-view"
+				title="{i18n>tooltipTableView}">
+				<content>
+					<m:Table/>
+				</content>
+			</ChartContainerContent>
+		</content>
+	</ChartContainer>
+</core:FragmentDefinition>

@@ -1,15 +1,15 @@
-<mvc:View controllerName="sap.support.sccd.controller.ut.UTOverview"
+<mvc:View controllerName="sap.support.sccd.controller.ut.UTOv"
 	xmlns="sap.suite.ui.commons"
 	xmlns:m="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:layout="sap.ui.layout"
-	xmlns:viz="sap.viz.ui5.controls">
-	
-	<layout:FixFlex>
+	xmlns:viz="sap.viz.ui5.controls"
+	height="100%">
+	<m:Page enableScrolling="false">
+<!-- 	<layout:FixFlex minFlexSize="250">
 		<layout:fixContent>
-			<m:Text text="Fixed Content"></m:Text>
 		</layout:fixContent>
-		<layout:flexContent>
+		<layout:flexContent> -->
 			<ChartContainer
 				id="cc_ut"
 				showFullScreen="true"
@@ -36,6 +36,7 @@
 					</ChartContainerContent>
 				</content>
 			</ChartContainer>
-		</layout:flexContent>
-	</layout:FixFlex>
+<!-- 		</layout:flexContent>
+	</layout:FixFlex> -->
+</m:Page>
 </mvc:View>
