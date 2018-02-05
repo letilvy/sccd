@@ -6,13 +6,13 @@
 		"ref": "sap-icon://home"
 	},
 	{
-		"route": "utOverview",
+		"route": "utov",
 		"routeParam": null,
 		"text": "Unit Test",
 		"ref": "sap-icon://badge"
 	},
 	{
-		"route": "itOverview",
+		"route": "itov",
 		"routeParam": null,
 		"text": "Integration Test",
 		"ref": "sap-icon://machine"

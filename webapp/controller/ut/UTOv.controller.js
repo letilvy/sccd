@@ -7,6 +7,7 @@ sap.ui.define([
 	return BaseController.extend("sap.support.sccd.controller.ut.UTOv", {
 
 		onInit: function(){
+			this.byId("cc_ov").setModel(this.getModel("utoverview"));
 		}
 
 	});

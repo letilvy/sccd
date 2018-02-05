@@ -115,13 +115,13 @@
 					"target": ["master", "home"]
 				},
 				{
-					"pattern": "utOverview",
-					"name": "utOverview",
+					"pattern": "utov",
+					"name": "utov",
 					"target": ["master", "utoverview"]
 				},
 				{
-					"pattern": "itOverview",
-					"name": "itOverview",
+					"pattern": "itov",
+					"name": "itov",
 					"target": ["master", "itoverview"]
 				}
 			],
@@ -137,12 +137,12 @@
 					"controlAggregation": "detailPages"
 				},
 				"utoverview": {
-					"viewName": "ut.UTOverview",
+					"viewName": "ut.UTOv",
 					"viewLevel": 1,
 					"controlAggregation": "detailPages"
 				},
 				"itoverview": {
-					"viewName": "it.ITOverview",
+					"viewName": "it.ITOv",
 					"viewLevel": 1,
 					"controlAggregation": "detailPages"
 				}

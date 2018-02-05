@@ -1,33 +1,114 @@
 <core:FragmentDefinition
-	xmlns="sap.suite.ui.commons"
-	xmlns:m="sap.m"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:viz="sap.viz.ui5.controls">
-	<ChartContainer
+	xmlns:commons="sap.suite.ui.commons"
+	xmlns:viz="sap.viz.ui5.controls"
+	xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+	<commons:ChartContainer
 		id="cc_ov"
 		showFullScreen="true"
 		showPersonalization="false"
 		autoAdjustHeight="true"
 		showSelectionDetails="false">		
-		<content>
-			<ChartContainerContent
-				icon="sap-icon://bar-chart"
+		<commons:content>
+			<commons:ChartContainerContent
+				id="ccc_chart"
+				icon="sap-icon://horizontal-stacked-chart"
 				title="{i18n>tooltipChartView}">
-				<content>
+				<commons:content>
 					<viz:VizFrame 
 						height="100%"
 						width="100%"
 						vizType="stacked_bar"
-						uiConfig="{applicationSet:'fiori'}"/>
-				</content>
-			</ChartContainerContent>
-			<ChartContainerContent
+						vizProperties="{
+							plotArea: {
+								colorPalette: ['#bb0000', '#b6d957'],
+								dataLabel: {
+									showTotal: true
+								}
+							},
+							title: {
+								visible: false
+							}
+						}"
+						uiConfig="{applicationSet:'fiori'}">
+						<viz:dataset>
+							<viz.data:FlattenedDataset data="{/}">
+								<viz.data:dimensions>
+									<viz.data:DimensionDefinition name="Project" value="{pid}"/>
+								</viz.data:dimensions>
+								<viz.data:measures>
+									<viz.data:MeasureDefinition name="Passed" value="{passed}"/>
+									<viz.data:MeasureDefinition name="Failed" value="{failed}"/>
+								</viz.data:measures>
+							</viz.data:FlattenedDataset>
+						</viz:dataset>
+						<viz:feeds>
+							<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Project" />
+							<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Failed,Passed" />
+						</viz:feeds>
+					</viz:VizFrame>
+				</commons:content>
+			</commons:ChartContainerContent>
+			
+			<commons:ChartContainerContent
+				id="ccc_table"
 				icon="sap-icon://table-view"
 				title="{i18n>tooltipTableView}">
-				<content>
-					<m:Table/>
-				</content>
-			</ChartContainerContent>
-		</content>
-	</ChartContainer>
+				<commons:content>
+					<Table
+						selectionChange="onSelectProject"
+						items="{
+							path: '/',
+							sorter: {
+								path: 'pid'
+							}
+						}">
+						<columns>
+							<Column>
+								<Text text="{i18n>colTitleProjectName}"/>
+							</Column>
+							<Column
+								minScreenWidth="Phone"
+								demandPopin="true"
+								hAlign="Center">
+								<Text text="{i18n>colTitlePassedCaseCnt}"/>
+							</Column>
+							<Column
+								minScreenWidth="Phone"
+								demandPopin="true"
+								hAlign="Center">
+								<Text text="{i18n>colTitleFailedCaseCnt}"/>
+							</Column>
+							<Column
+								minScreenWidth="Tablet"
+								demandPopin="true"
+								hAlign="Center">
+								<Text text="{i18n>colTitleSkippedCaseCnt}"/>
+							</Column>
+							<Column
+								minScreenWidth="Tablet"
+								demandPopin="true"
+								hAlign="Center">
+								<Text text="{i18n>colTitleAssertionCnt}"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Navigation">
+								<cells>
+									<Text text="{pid}"/>
+									<ObjectStatus text="{passed}" state="Success"/>
+									<ObjectStatus text="{failed}" state="{=${failed} > 0 ? 'Error' : 'None'}"/>
+									<ObjectStatus text="{skipped}" state="{=${skipped} > 0 ? 'Warning' : 'None'}"/>
+									<ObjectStatus text="{assertion}" state="None"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</commons:content>
+			</commons:ChartContainerContent>			
+		</commons:content>
+	</commons:ChartContainer>
 </core:FragmentDefinition>
