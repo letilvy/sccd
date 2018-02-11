@@ -8,6 +8,10 @@ sap.ui.define([
 
 		onInit: function(){
 			this.byId("cc_ov").setModel(this.getModel("itoverview"));
+
+			this.byId("cc_ov").setTitle(this.getResourceBundle().getText("titleITOverview"));
+			var oPoProjectCase = this.byId("po_case");
+			oPoProjectCase.connect(this.byId("vf_case").getVizUid());
 		}
 		
 	});

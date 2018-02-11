@@ -18,7 +18,9 @@
 				icon="sap-icon://horizontal-stacked-chart"
 				title="{i18n>tooltipChartView}">
 				<commons:content>
-					<viz:VizFrame 
+					<viz:Popover id="po_case" />
+					<viz:VizFrame
+						id="vf_case"
 						height="100%"
 						width="100%"
 						vizType="stacked_bar"
