@@ -123,6 +123,11 @@
 					"pattern": "itov",
 					"name": "itov",
 					"target": ["master", "itoverview"]
+				},
+				{
+					"pattern": "project/{pid}",
+					"name": "project",
+					"target": ["master", "project"]
 				}
 			],
 			"targets": {
@@ -144,6 +149,11 @@
 				"itoverview": {
 					"viewName": "it.ITOv",
 					"viewLevel": 1,
+					"controlAggregation": "detailPages"
+				},
+				"project": {
+					"viewName": "Project",
+					"viewLevel": 2,
 					"controlAggregation": "detailPages"
 				}
 			}

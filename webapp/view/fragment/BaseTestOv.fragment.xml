@@ -61,7 +61,7 @@
 				title="{i18n>tooltipTableView}">
 				<commons:content>
 					<Table
-						selectionChange="onSelectProject"
+						itemPress="onPressProject"
 						items="{
 							path: '/',
 							sorter: {

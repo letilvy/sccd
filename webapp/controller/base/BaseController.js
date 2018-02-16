@@ -10,6 +10,14 @@ sap.ui.define([
 			return sap.ui.core.UIComponent.getRouterFor(this);
 		},
 
+		navBack: function(){
+			if(History.getInstance().getPreviousHash() !== undefined){
+				window.history.go(-1);
+			}else{
+				this.getRouter().navTo("home", {}, true);
+			}
+		},
+
 		getModel: function(sName){
 			return this.getOwnerComponent().getModel(sName);
 		},
