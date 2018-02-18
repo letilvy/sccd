@@ -6,11 +6,14 @@ sap.ui.define([
 	return BaseController.extend("sap.support.sccd.controller.Project", {
 		onInit: function(){
 			this.getRouter().getRoute("project").attachPatternMatched(this._onProjectMatched, this);
+
+			var oPoProjectCase = this.byId("po_project_case");
+			oPoProjectCase.connect(this.byId("vf_project_case").getVizUid());
 		},
 
 		_onProjectMatched: function(oEvent){
-			var sPid = oEvent.getParameter("arguments").pid;
-			sap.m.MessageToast.show(sPid);
+			var oArgv = oEvent.getParameter("arguments");
+			this.byId("vf_project_case").setModel(this.getModel(oArgv.testtype + "project"));
 		}
 	});
 });

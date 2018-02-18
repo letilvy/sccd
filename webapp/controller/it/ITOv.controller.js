@@ -18,7 +18,8 @@ sap.ui.define([
 		onPressProject: function(oEvent){
 			var sPid = oEvent.getParameter("listItem").getBindingContext().getProperty("pid");
 			this.getRouter().navTo("project", {
-				pid: sPid
+				pid: sPid,
+				testtype: "it"
 			});
 		}
 		

@@ -1,10 +1,14 @@
 <mvc:View controllerName="sap.support.sccd.controller.Project"
 	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc">
 	<Page
 		title="{/pname}"
 		showNavButton="true"
 		navButtonPress="navBack">
 		
+		<content>
+			<core:Fragment fragmentName="sap.support.sccd.view.fragment.ProjectBaseTest" type="XML"/>
+		</content>
 	</Page>
 </mvc:View>

@@ -92,6 +92,14 @@
 			"itoverview": {
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/it.json"
+			},
+			"utproject": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/project_ut.json"
+			},
+			"itproject": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/project_it.json"
 			}
 		},
 		"routing": {
@@ -125,7 +133,7 @@
 					"target": ["master", "itoverview"]
 				},
 				{
-					"pattern": "project/{pid}",
+					"pattern": "project/{pid}/{testtype}",
 					"name": "project",
 					"target": ["master", "project"]
 				}
