@@ -81,6 +81,10 @@
 					"bundleName": "sap.support.sccd.i18n.i18n"
 				}
 			},
+			"config": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/config.json"
+			},
 			"menu": {
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/menu.json"

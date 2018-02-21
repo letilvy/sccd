@@ -1,14 +1,65 @@
 <mvc:View controllerName="sap.support.sccd.controller.Project"
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core"
-	xmlns:mvc="sap.ui.core.mvc">
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:viz="sap.viz.ui5.controls"
+	xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
 	<Page
 		title="{/pname}"
 		showNavButton="true"
-		navButtonPress="navBack">
-		
+		navButtonPress="navBack">		
 		<content>
-			<core:Fragment fragmentName="sap.support.sccd.view.fragment.ProjectBaseTest" type="XML"/>
+			<viz:Popover id="po_project_case" />
+			<viz:VizFrame
+				id="vf_project_case"
+				height="100%"
+				width="100%"
+				vizType="stacked_combination"
+				vizProperties="{
+					plotArea: {
+						colorPalette: ['sapUiChartPaletteQualitativeHue1', '#bb0000', '#b6d957'],
+						dataLabel: {
+							visible: true,
+							showTotal: true
+						},
+						dataShape: {
+							primaryAxis: ['line', 'bar', 'bar']
+						}
+					},
+					categoryAxis: {
+                        title: {
+                            visible: true
+                        }
+                    },
+					title: {
+						visible: false
+					}
+				}"
+				uiConfig="{applicationSet:'fiori'}">
+				<viz:dataset>
+					<viz.data:FlattenedDataset data="{/}">
+						<viz.data:dimensions>
+							<viz.data:DimensionDefinition
+								name="Date"
+								value="{
+									path: 'timestamp',
+									formatter: '.Formatter.dateAxis'
+								}"
+								dataType="date"/>
+						</viz.data:dimensions>
+						<viz.data:measures>
+							<viz.data:MeasureDefinition name="Assertion" value="{assertion}"/>
+							<viz.data:MeasureDefinition name="Passed" value="{passed}"/>
+							<viz.data:MeasureDefinition name="Failed" value="{failed}"/>
+						</viz.data:measures>
+					</viz.data:FlattenedDataset>
+				</viz:dataset>
+				<viz:feeds>
+					<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Date" />
+					<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Assertion,Failed,Passed" />
+				</viz:feeds>
+			</viz:VizFrame>
 		</content>
 	</Page>
 </mvc:View>

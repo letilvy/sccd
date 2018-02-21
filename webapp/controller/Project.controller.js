@@ -1,9 +1,12 @@
 sap.ui.define([
-	"sap/support/sccd/controller/base/BaseController"
-], function(BaseController){
+	"sap/support/sccd/controller/base/BaseController",
+	"sap/support/sccd/model/Formatter"
+], function(BaseController, Formatter){
 	"use strict";
 
 	return BaseController.extend("sap.support.sccd.controller.Project", {
+		Formatter: Formatter,
+
 		onInit: function(){
 			this.getRouter().getRoute("project").attachPatternMatched(this._onProjectMatched, this);
 
@@ -13,7 +16,16 @@ sap.ui.define([
 
 		_onProjectMatched: function(oEvent){
 			var oArgv = oEvent.getParameter("arguments");
-			this.byId("vf_project_case").setModel(this.getModel(oArgv.testtype + "project"));
+
+			var oVizFrame = this.byId("vf_project_case");
+			oVizFrame.setModel(this.getModel(oArgv.testtype + "project"));
+
+			oVizFrame.setVizProperties({
+				plotArea: {
+					colorPalette: this.getModel("config").getProperty("/colorPalette/" + oArgv.testtype + "/project"),
+					//dataLabel: {visible: true}
+				}
+			});
 		}
 	});
 });

@@ -15,6 +15,12 @@ sap.ui.define([
 			oPoProjectCase.connect(this.byId("vf_case").getVizUid());
 			/*var oTooltip = new sap.viz.ui5.controls.VizTooltip({});
             oTooltip.connect(this.byId("vf_case").getVizUid());*/
+
+			this.byId("vf_case").setVizProperties({
+				plotArea: {
+					colorPalette: this.getModel("config").getProperty("/colorPalette/ut/overview")
+				}
+			});
 		},
 
 		onPressProject: function(oEvent){

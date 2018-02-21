@@ -15,7 +15,7 @@
 			plotArea: {
 				colorPalette: ['sapUiChartPaletteQualitativeHue1', '#bb0000', '#b6d957'],
 				dataLabel: {
-					showTotal: true
+					visible: true
 				},
 				dataShape: {
 					primaryAxis: ['line', 'bar', 'bar']

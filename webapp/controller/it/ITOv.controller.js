@@ -13,6 +13,12 @@ sap.ui.define([
 			
 			var oPoProjectCase = this.byId("po_case");
 			oPoProjectCase.connect(this.byId("vf_case").getVizUid());
+
+			this.byId("vf_case").setVizProperties({
+				plotArea: {
+					colorPalette: this.getModel("config").getProperty("/colorPalette/it/overview")
+				}
+			});
 		},
 
 		onPressProject: function(oEvent){
