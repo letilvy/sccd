@@ -6,6 +6,27 @@ sap.ui.define([
 	
 	return Controller.extend("sap.support.sccd.controller.BaseController", {
 		
+		_sTestType: "ut",
+
+		getTestType: function(bUpperCase){
+			return bUpperCase ? this._sTestType.toUpperCase():this._sTestType.toLowerCase();
+		},
+
+		setTestType: function(sType){
+			this._sTestType = sType;
+		},
+
+		showTestCaseHistory: function(){
+			var sPid = this.byId(this.mUiId.VizFrame).vizSelection()[0].data.Project;
+			this.byId(this.mUiId.VizFrame).vizSelection([], {
+			    clearSelection: true
+			});
+			this.getRouter().navTo("project", {
+				pid: sPid,
+				testtype: this.getTestType()
+			});
+		},
+
 		getRouter: function(){
 			return sap.ui.core.UIComponent.getRouterFor(this);
 		},

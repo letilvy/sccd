@@ -1,94 +1,183 @@
 <mvc:View controllerName="sap.support.sccd.controller.Home"
 	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:mc="sap.suite.ui.microchart">
+	xmlns:layout="sap.ui.layout"
+	xmlns:mc="sap.suite.ui.microchart"
+	xmlns:commons="sap.suite.ui.commons"
+	xmlns:viz="sap.viz.ui5.controls"
+	xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	height="100%">
 	<!-- <Page> -->
-		<HeaderContainer showDividers="true">
-			<TileContent footer="Total Projects">
-				<content>
-					<NumericContent value="{kpi>/TotalProjects}"
-						valueColor="Neutral"
-						indicator="None"
-						icon="sap-icon://sap-ui5" />
-				</content>
-			</TileContent>
-			<TileContent unit="" footer="Top 3 Active">
-				<content>
-					<mc:ComparisonMicroChart
-						isResponsive="true"
-						data="{kpi>/TopActive}">
-						<mc:data>
-							<mc:ComparisonMicroChartData
-								title="{kpi>ProjectName}"
-								value="{kpi>TotalCase}"
-								displayValue="{kpi>TotalCase}"
-								color="Good" />
-						</mc:data>
-					</mc:ComparisonMicroChart>
-				</content>
-			</TileContent>
-			<TileContent footer="Healthy UT Projects">
-				<content>
-					<mc:DeltaMicroChart
-						isResponsive="true"
-						color="Error"
-						value1="{kpi>/TotalProjects}"
-						value2="{kpi>/HealthyUTProjects}"
-						title1="{i18n>titleTotal}"
-						title2="{i18n>titleUnhealthyUTProject}"
-						displayValue1="{kpi>/TotalProjects}"
-						displayValue2="{kpi>/HealthyUTProjects}"
-						deltaDisplayValue="{
-							parts: [
-								'kpi>/TotalProjects',
-								'kpi>/HealthyUTProjects'
-							],
-							formatter: '.getValuesDelta'
-						}" />
-				</content>
-			</TileContent>
-			<TileContent footer="UT Case Number">
-				<content>
-					<mc:LineMicroChart
-						size="Responsive"
-						threshold="{kpi>/fillLevel/threshold}"
-						leftTopLabel="{kpi>/fillLevel/valueBegin}"
-						leftBottomLabel="{kpi>/fillLevel/timeBegin}"
-						rightTopLabel="{kpi>/fillLevel/valueEnd}"
-						rightBottomLabel="{kpi>/fillLevel/timeEnd}"
-						color="{kpi>/fillLevel/color}"
-						showPoints="true"
-						points="{
-							path: 'kpi>/fillLevel/timeSeries',
-							templateShareable: true
-						}">
-						<mc:LineMicroChartPoint
-							x="{kpi>time}"
-							y="{kpi>level}" />
-					</mc:LineMicroChart>
-				</content>
-			</TileContent>
-			<TileContent footer="Healthy IT Projects">
-				<content>
-					<mc:DeltaMicroChart
-						isResponsive="true"
-						color="Critical"
-						value1="{kpi>/TotalProjects}"
-						value2="{kpi>/HealthyITProjects}"
-						title1="{i18n>titleTotal}"
-						title2="{i18n>titleUnhealthyITProject}"
-						displayValue1="{kpi>/TotalProjects}"
-						displayValue2="{kpi>/HealthyITProjects}"
-						deltaDisplayValue="{
-							parts: [
-								'kpi>/TotalProjects',
-								'kpi>/HealthyITProjects'
-							],
-							formatter: '.getValuesDelta'
-						}" />
-				</content>
-			</TileContent>
+	<layout:FixFlex minFlexSize="250">
+        <layout:fixContent>
+			<HeaderContainer showDividers="true" class="sapUiTinyMarginTop">
+				<TileContent footer="Total Projects">
+					<content>
+						<NumericContent value="{kpi>/TotalProjects}"
+							valueColor="Neutral"
+							indicator="None"
+							icon="sap-icon://sap-ui5" />
+					</content>
+				</TileContent>
+				<TileContent unit="" footer="Top 3 Active">
+					<content>
+						<mc:ComparisonMicroChart
+							isResponsive="true"
+							data="{kpi>/TopActive}">
+							<mc:data>
+								<mc:ComparisonMicroChartData
+									title="{kpi>ProjectName}"
+									value="{kpi>TotalCase}"
+									displayValue="{kpi>TotalCase}"
+									color="Good" />
+							</mc:data>
+						</mc:ComparisonMicroChart>
+					</content>
+				</TileContent>
+				<TileContent footer="Healthy UT Projects">
+					<content>
+						<mc:DeltaMicroChart
+							isResponsive="true"
+							color="Error"
+							value1="{kpi>/TotalProjects}"
+							value2="{kpi>/HealthyUTProjects}"
+							title1="{i18n>titleTotal}"
+							title2="{i18n>titleUnhealthyUTProject}"
+							displayValue1="{kpi>/TotalProjects}"
+							displayValue2="{kpi>/HealthyUTProjects}"
+							deltaDisplayValue="{
+								parts: [
+									'kpi>/TotalProjects',
+									'kpi>/HealthyUTProjects'
+								],
+								formatter: '.getValuesDelta'
+							}" />
+					</content>
+				</TileContent>
+				<TileContent footer="UT Case Number">
+					<content>
+						<mc:LineMicroChart
+							size="Responsive"
+							threshold="{kpi>/fillLevel/threshold}"
+							leftTopLabel="{kpi>/fillLevel/valueBegin}"
+							leftBottomLabel="{kpi>/fillLevel/timeBegin}"
+							rightTopLabel="{kpi>/fillLevel/valueEnd}"
+							rightBottomLabel="{kpi>/fillLevel/timeEnd}"
+							color="{kpi>/fillLevel/color}"
+							showPoints="true"
+							points="{
+								path: 'kpi>/fillLevel/timeSeries',
+								templateShareable: true
+							}">
+							<mc:LineMicroChartPoint
+								x="{kpi>time}"
+								y="{kpi>level}" />
+						</mc:LineMicroChart>
+					</content>
+				</TileContent>
+				<TileContent footer="Healthy IT Projects">
+					<content>
+						<mc:DeltaMicroChart
+							isResponsive="true"
+							color="Critical"
+							value1="{kpi>/TotalProjects}"
+							value2="{kpi>/HealthyITProjects}"
+							title1="{i18n>titleTotal}"
+							title2="{i18n>titleUnhealthyITProject}"
+							displayValue1="{kpi>/TotalProjects}"
+							displayValue2="{kpi>/HealthyITProjects}"
+							deltaDisplayValue="{
+								parts: [
+									'kpi>/TotalProjects',
+									'kpi>/HealthyITProjects'
+								],
+								formatter: '.getValuesDelta'
+							}" />
+					</content>
+				</TileContent>
+			</HeaderContainer>
+        </layout:fixContent>
 
-		</HeaderContainer>
+        <layout:flexContent>
+			<commons:ChartContainer
+				id="cc_home"
+				showFullScreen="true"
+				showPersonalization="false"
+				autoAdjustHeight="true"
+				showSelectionDetails="false">
+				<commons:toolbar>
+					<OverflowToolbar id="appToolbar">
+						<Select selectedKey="quantity" change="onChangeChartType">
+							<core:Item text="{i18n>text100StackedColumn}" key="percentage" />
+							<core:Item text="{i18n>textRegularStackedColumn}" key="quantity" />
+						</Select>
+						<ToolbarSpacer/>
+						<commons:ChartContainerToolbarPlaceholder/>
+					</OverflowToolbar>
+				</commons:toolbar>	
+				<commons:content>
+					<commons:ChartContainerContent
+						icon="sap-icon://horizontal-stacked-chart"
+						title="{i18n>tooltipChartView}">
+						<commons:content>
+							<viz:Popover id="po_home" />
+							<viz:VizFrame
+								id="vf_home"
+								height="100%"
+								width="100%"
+								vizType="stacked_column"
+								vizProperties="{
+									title: {
+										visible: false
+									},
+									valueAxis: {
+										title: {
+											visible: false
+										}
+									},
+									categoryAxis: {
+										title: {
+											visible: false
+										}
+									},
+									plotArea: {
+										colorPalette: ['sapUiChartPaletteQualitativeHue5', 'sapUiChartPaletteQualitativeHue6', 'sapUiChartPaletteQualitativeHue7'],
+										dataLabel: {
+											visible: true,
+											showTotal: true
+										}
+									},
+									interaction: {
+										selectability: {
+											mode: 'single'
+										}
+									}
+								}"
+								uiConfig="{applicationSet:'fiori'}"
+								selectData="onSelectCase">
+								<viz:dataset>
+									<viz.data:FlattenedDataset data="{/}">
+										<viz.data:dimensions>
+											<viz.data:DimensionDefinition name="Project" value="{pid}"/>
+										</viz.data:dimensions>
+										<viz.data:measures>
+											<viz.data:MeasureDefinition name="Unit Test" value="{passed}"/>
+											<viz.data:MeasureDefinition name="Integration Test" value="{failed}"/>
+										</viz.data:measures>
+									</viz.data:FlattenedDataset>
+								</viz:dataset>
+								<viz:feeds>
+									<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Project" />
+									<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Integration Test,Unit Test" />
+								</viz:feeds>
+							</viz:VizFrame>
+						</commons:content>
+					</commons:ChartContainerContent>			
+				</commons:content>
+			</commons:ChartContainer>
+	    </layout:flexContent>
+    </layout:FixFlex>
 	<!-- </Page> -->
 </mvc:View>

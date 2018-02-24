@@ -5,57 +5,67 @@ sap.ui.define([
 	"use strict";
 
 	return BaseController.extend("sap.support.sccd.controller.Home", {
+
+		mUiId: {
+			ChartContainer: "cc_home",
+			VizFrame: "vf_home",
+			Popover: "po_home"
+		},
+
 		onInit: function(){
 			this.getRouter().getRoute("home").attachPatternMatched(this.onLoadHome, this);
 
-			this.setModel(new JSONModel({
-				TotalProjects: 25,
-				TopActive: [
-					{ProjectName: "SaE", TotalCase: 491},
-					{ProjectName: "B1 SMP PUM", TotalCase: 259},
-					{ProjectName: "Note Search", TotalCase: 91}
-				],
-				HealthyUTProjects: 20,
-				HealthyITProjects: 16,
-				"fillLevel": {
-					"threshold": 20,
-					"measure": "lb",
-					"valueBegin": "30",
-					"valueEnd": "5",
-					"timeBegin": "Aug",
-					"timeEnd": "Nov",
-					"color": {
-						"above": "Good",
-						"below": "Error"
-					},
-					"timeSeries": [
-						{
-							"time": 0,
-							"level": 30
-						},
-						{
-							"time": 1,
-							"level": 49
-						},
-						{
-							"time": 2,
-							"level": 28
-						},
-						{
-							"time": 2.5,
-							"level": 11
-						},
-						{
-							"time": 3,
-							"level": 5
-						}
-					]
-				}
-			}), "kpi");
+			this.byId(this.mUiId.ChartContainer).setModel(this.getModel("utoverview"));
+
+			var oPoHome = this.byId(this.mUiId.Popover);
+			oPoHome.connect(this.byId(this.mUiId.VizFrame).getVizUid());
 		},
 
 		onLoadHome: function(){
 			
+		},
+
+		onSelectCase: function(oEvent){
+			var oCase = oEvent.getParameter("data")[0].data;
+			var sType;
+			switch(oCase.measureNames){
+				case "Unit Test": sType = "ut"; break;
+				case "Integration Test": sType = "it"; break;
+				case "System Test": sType = "st"; break; 
+				default: sType = ""; break;
+			}
+			this.setTestType(sType);
+			this.byId(this.mUiId.Popover).setActionItems([{
+				type: "action",
+				text: this.getResourceBundle().getText("textShow" + this.getTestType(true) + "History"),
+				press: [this.showTestCaseHistory, this]
+			}]);
+		},
+
+		onChangeChartType: function(oEvent){
+			var sKey = oEvent.getParameter("selectedItem").getKey();
+			if(sKey === "percentage"){
+				this.byId(this.mUiId.VizFrame).setVizType("100_stacked_column");
+				this.byId(this.mUiId.VizFrame).setVizProperties({
+					plotArea: {
+	                    dataLabel: {
+	                    	type: "percentage",
+	                        visible: true,
+	                        showTotal: false
+	                    }
+	                }
+				});
+			}else{
+				this.byId(this.mUiId.VizFrame).setVizType("stacked_column");
+				this.byId(this.mUiId.VizFrame).setVizProperties({
+					plotArea: {
+	                    dataLabel: {
+	                        visible: true,
+	                        showTotal: true
+	                    }
+	                }
+				});
+			}
 		},
 
 		getValuesDelta: function(fFirstValue, fSecondValue) {

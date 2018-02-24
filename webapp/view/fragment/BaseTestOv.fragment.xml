@@ -25,14 +25,20 @@
 						width="100%"
 						vizType="stacked_bar"
 						vizProperties="{
+							title: {
+								visible: false
+							},
 							plotArea: {
 								colorPalette: ['#bb0000', '#b6d957'],
 								dataLabel: {
+									visible: true,
 									showTotal: true
 								}
 							},
-							title: {
-								visible: false
+							interaction: {
+								selectability: {
+									mode: 'single'
+								}
 							}
 						}"
 						uiConfig="{applicationSet:'fiori'}">

@@ -89,6 +89,10 @@
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/menu.json"
 			},
+			"kpi": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/kpi.json"
+			},
 			"utoverview": {
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/ut.json"

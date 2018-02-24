@@ -17,10 +17,9 @@ sap.ui.define([
 		_onProjectMatched: function(oEvent){
 			var oArgv = oEvent.getParameter("arguments");
 
-			var oVizFrame = this.byId("vf_project_case");
-			oVizFrame.setModel(this.getModel(oArgv.testtype + "project"));
+			this.byId("cc_project_case").setModel(this.getModel(oArgv.testtype + "project"));
 
-			oVizFrame.setVizProperties({
+			this.byId("vf_project_case").setVizProperties({
 				plotArea: {
 					colorPalette: this.getModel("config").getProperty("/colorPalette/" + oArgv.testtype + "/project"),
 					//dataLabel: {visible: true}
