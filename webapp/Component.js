@@ -1,8 +1,9 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
+	"sap/support/sccd/model/DataModel",
 	"sap/ui/model/json/JSONModel"
-], function (UIComponent, Device, JSONModel) {
+], function (UIComponent, Device, DataModel, JSONModel) {
 	"use strict";
 
 	return UIComponent.extend("sap.support.sccd.Component", {
@@ -28,7 +29,7 @@ sap.ui.define([
 			// create the views based on the url/hash
 			this.getRouter().initialize();
 			
-			//this.getRouter().navTo("home");
+			this.setModel(new DataModel("/service/"));
 		},
 
 		/**

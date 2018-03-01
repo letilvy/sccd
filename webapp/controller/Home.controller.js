@@ -22,7 +22,17 @@ sap.ui.define([
 		},
 
 		onLoadHome: function(){
-			
+			this.getModel().read("UTSet", {
+				urlParameters: {
+					pid: "sbou01"
+				},
+				success: function(oData, oResponse){
+
+				},
+				error: function(oError){
+
+				}
+			});
 		},
 
 		onSelectCase: function(oEvent){

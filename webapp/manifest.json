@@ -13,7 +13,7 @@
 		"ach": "ach",
 		"dataSources": {
 			"mainService": {
-				"uri": "/here/goes/your/serviceurl/",
+				"uri": "/service/",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",
