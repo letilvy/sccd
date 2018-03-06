@@ -1,13 +1,13 @@
 sap.ui.define([
 	"jquery.sap.global",
-	"sap/ui/model/Model",
+	"sap/ui/model/odata/v2/ODataModel",
 	"sap/ui/model/odata/ODataUtils"
-], function(jQuery, Model, ODataUtils){
+], function(jQuery, ODataModel, ODataUtils){
 	"use strict";
 
-	var DataModel = Model.extend("sap.support.sccd.DataModel", {
+	var DataModel = ODataModel.extend("sap.support.sccd.DataModel", {
 		constructor: function(sServiceUrl){
-			Model.apply(this, arguments);
+			ODataModel.apply(this, arguments);
 
 			this.sServiceUrl = sServiceUrl.replace(/\/$/, "");
 			this.bUseBatch = false; //Batch mode is not supported in first step

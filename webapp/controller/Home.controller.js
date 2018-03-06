@@ -22,7 +22,7 @@ sap.ui.define([
 		},
 
 		onLoadHome: function(){
-			this.getModel().read("UTSet", {
+			this.getModel().read("/UTSet", {
 				urlParameters: {
 					pid: "sbou01"
 				},
