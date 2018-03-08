@@ -91,23 +91,23 @@
 			},
 			"kpi": {
 				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/kpi.json"
+				"uri": "model/mockdata/kpi.json"
 			},
 			"utoverview": {
 				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/ut.json"
+				"uri": "model/mockdata/ut.json"
 			},
 			"itoverview": {
 				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/it.json"
+				"uri": "model/mockdata/it.json"
 			},
 			"utproject": {
 				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/project_ut.json"
+				"uri": "model/mockdata/project_ut.json"
 			},
 			"itproject": {
 				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/project_it.json"
+				"uri": "model/mockdata/project_it.json"
 			}
 		},
 		"routing": {

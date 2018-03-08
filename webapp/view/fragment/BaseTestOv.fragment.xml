@@ -45,7 +45,7 @@
 						<viz:dataset>
 							<viz.data:FlattenedDataset data="{/}">
 								<viz.data:dimensions>
-									<viz.data:DimensionDefinition name="Project" value="{pid}"/>
+									<viz.data:DimensionDefinition name="Project" value="{projectName}"/>
 								</viz.data:dimensions>
 								<viz.data:measures>
 									<viz.data:MeasureDefinition name="Passed" value="{passed}"/>
@@ -106,7 +106,7 @@
 						<items>
 							<ColumnListItem type="Navigation">
 								<cells>
-									<Text text="{pid}"/>
+									<Text text="{projectName}"/>
 									<ObjectStatus text="{passed}" state="Success"/>
 									<ObjectStatus text="{failed}" state="{=${failed} > 0 ? 'Error' : 'None'}"/>
 									<ObjectStatus text="{skipped}" state="{=${skipped} > 0 ? 'Warning' : 'None'}"/>

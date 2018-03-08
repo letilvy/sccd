@@ -1,7 +1,8 @@
 sap.ui.define([
 	"sap/support/sccd/controller/base/BaseController",
+	"sap/support/sccd/model/Formatter",
 	"sap/ui/model/json/JSONModel"
-], function(BaseController, JSONModel){
+], function(BaseController, Formatter, JSONModel){
 	"use strict";
 
 	return BaseController.extend("sap.support.sccd.controller.Home", {
@@ -9,16 +10,21 @@ sap.ui.define([
 		mUiId: {
 			ChartContainer: "cc_home",
 			VizFrame: "vf_home",
-			Popover: "po_home"
+			Popover: "po_home",
+			VizFrameInclCoverage: "included--vf_coverage_ov",
+			PopoverInclCoverage: "included--po_coverage_ov",
+			VizFrameAllCoverage: "all--vf_coverage_ov",
+			PopoverAllCoverage: "all--po_coverage_ov"
 		},
+
+		Formatter: Formatter,
 
 		onInit: function(){
 			this.getRouter().getRoute("home").attachPatternMatched(this.onLoadHome, this);
 
 			this.byId(this.mUiId.ChartContainer).setModel(this.getModel("utoverview"));
 
-			var oPoHome = this.byId(this.mUiId.Popover);
-			oPoHome.connect(this.byId(this.mUiId.VizFrame).getVizUid());
+			this.connectPopoverToVizFrame();
 		},
 
 		onLoadHome: function(){
@@ -48,8 +54,14 @@ sap.ui.define([
 			this.byId(this.mUiId.Popover).setActionItems([{
 				type: "action",
 				text: this.getResourceBundle().getText("textShow" + this.getTestType(true) + "History"),
-				press: [this.showTestCaseHistory, this]
+				press: this.showTestCaseHistory.bind(this, this.mUiId.VizFrame)
 			}]);
+		},
+
+		onChangeCCContent: function(oEvent){
+			this.byId("select_test_type_chart").setVisible(
+				oEvent.getParameter("selectedItemId") === this.byId(this.mUiId.VizFrame).getId()
+			);
 		},
 
 		onChangeChartType: function(oEvent){

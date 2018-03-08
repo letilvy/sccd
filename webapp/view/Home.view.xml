@@ -9,7 +9,6 @@
 	xmlns:viz.data="sap.viz.ui5.data"
 	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
 	height="100%">
-	<!-- <Page> -->
 	<layout:FixFlex minFlexSize="250">
         <layout:fixContent>
 			<HeaderContainer showDividers="true" class="sapUiTinyMarginTop">
@@ -106,10 +105,11 @@
 				showFullScreen="true"
 				showPersonalization="false"
 				autoAdjustHeight="true"
-				showSelectionDetails="false">
+				showSelectionDetails="false"
+				contentChange="onChangeCCContent">
 				<commons:toolbar>
 					<OverflowToolbar id="appToolbar">
-						<Select selectedKey="quantity" change="onChangeChartType">
+						<Select id="select_test_type_chart" selectedKey="quantity" change="onChangeChartType">
 							<core:Item text="{i18n>text100StackedColumn}" key="percentage" />
 							<core:Item text="{i18n>textRegularStackedColumn}" key="quantity" />
 						</Select>
@@ -118,8 +118,10 @@
 					</OverflowToolbar>
 				</commons:toolbar>	
 				<commons:content>
+					<!-- Percentage of different types of test -->
 					<commons:ChartContainerContent
-						icon="sap-icon://horizontal-stacked-chart"
+						id="ccc_test_type"
+						icon="sap-icon://vertical-stacked-chart"
 						title="{i18n>tooltipChartView}">
 						<commons:content>
 							<viz:Popover id="po_home" />
@@ -160,7 +162,7 @@
 								<viz:dataset>
 									<viz.data:FlattenedDataset data="{/}">
 										<viz.data:dimensions>
-											<viz.data:DimensionDefinition name="Project" value="{pid}"/>
+											<viz.data:DimensionDefinition name="Project" value="{projectName}"/>
 										</viz.data:dimensions>
 										<viz.data:measures>
 											<viz.data:MeasureDefinition name="Unit Test" value="{passed}"/>
@@ -174,10 +176,28 @@
 								</viz:feeds>
 							</viz:VizFrame>
 						</commons:content>
-					</commons:ChartContainerContent>			
+					</commons:ChartContainerContent>
+
+					<!-- Coverage of included lines -->
+					<commons:ChartContainerContent
+						icon="sap-icon://business-objects-experience"
+						title="{i18n>tooltipChartView}">
+						<commons:content>
+							<core:Fragment id="included" fragmentName="sap.support.sccd.view.fragment.CoverageOv" type="XML"/>
+						</commons:content>
+					</commons:ChartContainerContent>
+
+					<!-- Coverage of all lines -->
+					<commons:ChartContainerContent
+						icon="sap-icon://horizontal-combination-chart"
+						title="{i18n>tooltipChartView}">
+						<commons:content>
+							<core:Fragment id="all" fragmentName="sap.support.sccd.view.fragment.CoverageOv" type="XML"/>
+						</commons:content>
+					</commons:ChartContainerContent>
+
 				</commons:content>
 			</commons:ChartContainer>
 	    </layout:flexContent>
     </layout:FixFlex>
-	<!-- </Page> -->
 </mvc:View>

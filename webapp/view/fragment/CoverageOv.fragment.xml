@@ -1,0 +1,70 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:viz="sap.viz.ui5.controls"
+	xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+	<viz:Popover id="po_coverage_ov" />
+	<viz:VizFrame
+		id="vf_coverage_ov"
+		height="100%"
+		width="100%"
+		vizType="dual_stacked_combination"
+		vizProperties="{
+			title: {
+				visible: false
+			},
+			valueAxis: {
+				visible: true,
+				title: {
+					visible: false
+				}
+			},
+			valueAxis2: {
+				visible: true,
+				title: {
+					visible: false
+				}
+			},
+			categoryAxis: {
+				title: {
+					visible: false
+				}
+			},
+			plotArea: {
+				primaryValuesColorPalette: ['sapUiChartPaletteSequentialHue1'],
+				secondaryValuesColorPalette: ['#b6d957'],
+				dataLabel: {
+					visible: true,
+					showTotal: true
+				},
+				dataShape: {
+					primaryAxis: ['line']
+				}
+			},
+			interaction: {
+				selectability: {
+					mode: 'single'
+				}
+			}
+		}"
+		uiConfig="{applicationSet:'fiori'}">
+		<viz:dataset>
+			<viz.data:FlattenedDataset data="{/}">
+				<viz.data:dimensions>
+					<viz.data:DimensionDefinition name="Project" value="{projectName}" />
+				</viz.data:dimensions>
+				<viz.data:measures>
+					<viz.data:MeasureDefinition name="Code Lines" value="{includeLine}"/>
+					<viz.data:MeasureDefinition name="Coverage" value="{includeCover}"/>
+				</viz.data:measures>
+			</viz.data:FlattenedDataset>
+		</viz:dataset>
+		<viz:feeds>
+			<viz.feeds:FeedItem uid="valueAxis2" type="Measure" values="Code Lines" />
+			<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Coverage" />
+			<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Project" />
+		</viz:feeds>
+	</viz:VizFrame>
+</core:FragmentDefinition>

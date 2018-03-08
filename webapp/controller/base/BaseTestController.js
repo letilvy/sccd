@@ -18,16 +18,7 @@ sap.ui.define([
 			this.byId(this.mUiId.ChartContainer).setTitle(
 				this.getResourceBundle().getText("title" + this.getTestType(true) + "Overview")
 			);
-			
-			var oPoProjectCase = this.byId(this.mUiId.Popover);
-			oPoProjectCase.setActionItems([{
-				type: "action",
-				text: this.getResourceBundle().getText("textShow" + this.getTestType(true) + "History"),
-				press: [this.showTestCaseHistory, this]
-			}]);
-			oPoProjectCase.connect(this.byId(this.mUiId.VizFrame).getVizUid());
-			/*var oTooltip = new sap.viz.ui5.controls.VizTooltip({});
-            oTooltip.connect(this.byId("vf_case").getVizUid());*/
+			this.connectPopoverToVizFrame();
 
 			this.byId(this.mUiId.VizFrame).setVizProperties({
 				plotArea: {
@@ -43,6 +34,5 @@ sap.ui.define([
 				testtype: this.getTestType()
 			});
 		}
-	
 	});
 });

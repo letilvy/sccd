@@ -16,13 +16,37 @@ sap.ui.define([
 			this._sTestType = sType;
 		},
 
-		showTestCaseHistory: function(){
-			var sPid = this.byId(this.mUiId.VizFrame).vizSelection()[0].data.Project;
-			this.byId(this.mUiId.VizFrame).vizSelection([], {
+		connectPopoverToVizFrame: function(){
+			if(this.mUiId){
+				var oReg = new RegExp(/^VizFrame(\w*)$/);
+				Object.keys(this.mUiId).forEach(function(sKey){
+					if(oReg.exec(sKey)){
+						var oPopover = this.byId(this.mUiId["Popover" + oReg.exec(sKey)[1]]);
+						oPopover.setActionItems([{
+							type: "action",
+							text: this.getResourceBundle().getText("textShow" + this.getTestType(true) + "History"),
+							press: this.showTestCaseHistory.bind(this, this.mUiId[sKey])
+						}]);
+						oPopover.connect(this.byId(this.mUiId[sKey]).getVizUid());									
+						/*var oTooltip = new sap.viz.ui5.controls.VizTooltip({});
+			            oTooltip.connect(this.byId(this.mUiId[sKey]).getVizUid());*/
+					}
+				}, this);
+			}
+		},
+
+		getProjectIdByName: function(sName){
+			return "sap.b1.smp.pum";
+		},
+
+		showTestCaseHistory: function(sVFId, oEvent){
+			var sPName = this.byId(sVFId).vizSelection()[0].data.Project;
+			var sPId = this.getProjectIdByName(sPName);
+			this.byId(sVFId).vizSelection([], {
 			    clearSelection: true
 			});
 			this.getRouter().navTo("project", {
-				pid: sPid,
+				pid: sPId,
 				testtype: this.getTestType()
 			});
 		},
@@ -47,9 +71,8 @@ sap.ui.define([
 			return this.getOwnerComponent().setModel(oModel, sName);
 		},
 		
-		getResourceBundle: function () {
+		getResourceBundle: function(){
 			return this.getOwnerComponent().getModel("i18n").getResourceBundle();
-		}
-	
+		}	
 	});
 });
