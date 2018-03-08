@@ -16,17 +16,21 @@ sap.ui.define([
 			this._sTestType = sType;
 		},
 
-		connectPopoverToVizFrame: function(){
+		connectPopoverToVizFrame: function(bAddAction){
+			bAddAction = (typeof bAddAction === "undefined" ? true : bAddAction);
+
 			if(this.mUiId){
 				var oReg = new RegExp(/^VizFrame(\w*)$/);
 				Object.keys(this.mUiId).forEach(function(sKey){
 					if(oReg.exec(sKey)){
 						var oPopover = this.byId(this.mUiId["Popover" + oReg.exec(sKey)[1]]);
-						oPopover.setActionItems([{
-							type: "action",
-							text: this.getResourceBundle().getText("textShow" + this.getTestType(true) + "History"),
-							press: this.showTestCaseHistory.bind(this, this.mUiId[sKey])
-						}]);
+						if(bAddAction){
+							oPopover.setActionItems([{
+								type: "action",
+								text: this.getResourceBundle().getText("textShow" + this.getTestType(true) + "History"),
+								press: this.showTestCaseHistory.bind(this, this.mUiId[sKey])
+							}]);
+						}
 						oPopover.connect(this.byId(this.mUiId[sKey]).getVizUid());									
 						/*var oTooltip = new sap.viz.ui5.controls.VizTooltip({});
 			            oTooltip.connect(this.byId(this.mUiId[sKey]).getVizUid());*/

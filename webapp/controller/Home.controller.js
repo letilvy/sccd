@@ -1,8 +1,9 @@
 sap.ui.define([
 	"sap/support/sccd/controller/base/BaseController",
 	"sap/support/sccd/model/Formatter",
-	"sap/ui/model/json/JSONModel"
-], function(BaseController, Formatter, JSONModel){
+	"sap/ui/model/json/JSONModel",
+	"sap/viz/ui5/data/FlattenedDataset"
+], function(BaseController, Formatter, JSONModel, FlattenedDataset){
 	"use strict";
 
 	return BaseController.extend("sap.support.sccd.controller.Home", {
@@ -21,10 +22,31 @@ sap.ui.define([
 
 		onInit: function(){
 			this.getRouter().getRoute("home").attachPatternMatched(this.onLoadHome, this);
-
 			this.byId(this.mUiId.ChartContainer).setModel(this.getModel("utoverview"));
 
 			this.connectPopoverToVizFrame();
+
+			var oVfAllCoverage = this.byId(this.mUiId.VizFrameAllCoverage);
+			oVfAllCoverage.destroyDataset();
+			oVfAllCoverage.setDataset(new FlattenedDataset({
+                "dimensions": [{
+                    "name": "Project",
+                    "value": "{projectName}"
+                }, {
+                    "name": "Team",
+                    "value": "{teamName}"
+                }],
+                "measures": [{
+                    "name": "Code Lines",
+                    "value": "{allLine}"
+                }, {
+                    "name": "Coverage",
+                    "value": "{allCover}"
+                }],
+                data: {
+                    path: "/"
+                }
+            }));
 		},
 
 		onLoadHome: function(){

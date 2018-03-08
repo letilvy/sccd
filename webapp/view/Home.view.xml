@@ -163,6 +163,7 @@
 									<viz.data:FlattenedDataset data="{/}">
 										<viz.data:dimensions>
 											<viz.data:DimensionDefinition name="Project" value="{projectName}"/>
+											<viz.data:DimensionDefinition name="Team" value="{teamName}"/>
 										</viz.data:dimensions>
 										<viz.data:measures>
 											<viz.data:MeasureDefinition name="Unit Test" value="{passed}"/>
@@ -171,7 +172,7 @@
 									</viz.data:FlattenedDataset>
 								</viz:dataset>
 								<viz:feeds>
-									<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Project" />
+									<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Team,Project" />
 									<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Integration Test,Unit Test" />
 								</viz:feeds>
 							</viz:VizFrame>

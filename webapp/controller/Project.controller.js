@@ -5,24 +5,28 @@ sap.ui.define([
 	"use strict";
 
 	return BaseController.extend("sap.support.sccd.controller.Project", {
+
+		mUiId: {
+			ChartContainer: "cc_project_case",
+			VizFrame: "vf_project_case",
+			Popover: "po_project_case"
+		},
+
 		Formatter: Formatter,
 
 		onInit: function(){
 			this.getRouter().getRoute("project").attachPatternMatched(this._onProjectMatched, this);
-
-			var oPoProjectCase = this.byId("po_project_case");
-			oPoProjectCase.connect(this.byId("vf_project_case").getVizUid());
+			this.connectPopoverToVizFrame(false);
 		},
 
 		_onProjectMatched: function(oEvent){
 			var oArgv = oEvent.getParameter("arguments");
 
-			this.byId("cc_project_case").setModel(this.getModel(oArgv.testtype + "project"));
+			this.byId(this.mUiId.ChartContainer).setModel(this.getModel(oArgv.testtype + "project"));
 
-			this.byId("vf_project_case").setVizProperties({
+			this.byId(this.mUiId.VizFrame).setVizProperties({
 				plotArea: {
 					colorPalette: this.getModel("config").getProperty("/colorPalette/" + oArgv.testtype + "/project"),
-					//dataLabel: {visible: true}
 				}
 			});
 		}

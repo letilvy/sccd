@@ -14,17 +14,16 @@ sap.ui.define([
 
 		onInit: function(){
 			this.byId(this.mUiId.ChartContainer).setModel(this.getModel(this.getTestType() + "overview"));
-
 			this.byId(this.mUiId.ChartContainer).setTitle(
 				this.getResourceBundle().getText("title" + this.getTestType(true) + "Overview")
 			);
-			this.connectPopoverToVizFrame();
-
 			this.byId(this.mUiId.VizFrame).setVizProperties({
 				plotArea: {
 					colorPalette: this.getModel("config").getProperty("/colorPalette/" + this.getTestType() + "/overview")
 				}
 			});
+
+			this.connectPopoverToVizFrame();
 		},
 
 		onPressProject: function(oEvent){

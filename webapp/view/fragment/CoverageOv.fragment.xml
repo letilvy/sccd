@@ -54,6 +54,7 @@
 			<viz.data:FlattenedDataset data="{/}">
 				<viz.data:dimensions>
 					<viz.data:DimensionDefinition name="Project" value="{projectName}" />
+					<viz.data:DimensionDefinition name="Team" value="{teamName}" />
 				</viz.data:dimensions>
 				<viz.data:measures>
 					<viz.data:MeasureDefinition name="Code Lines" value="{includeLine}"/>
@@ -64,7 +65,7 @@
 		<viz:feeds>
 			<viz.feeds:FeedItem uid="valueAxis2" type="Measure" values="Code Lines" />
 			<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Coverage" />
-			<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Project" />
+			<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Team,Project" />
 		</viz:feeds>
 	</viz:VizFrame>
 </core:FragmentDefinition>
