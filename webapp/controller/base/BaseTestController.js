@@ -27,7 +27,7 @@ sap.ui.define([
 		},
 
 		onPressProject: function(oEvent){
-			var sPid = oEvent.getParameter("listItem").getBindingContext().getProperty("pid");
+			var sPid = oEvent.getParameter("listItem").getBindingContext().getProperty("projectId");
 			this.getRouter().navTo("project", {
 				pid: sPid,
 				testtype: this.getTestType()

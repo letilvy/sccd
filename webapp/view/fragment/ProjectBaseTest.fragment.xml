@@ -19,6 +19,10 @@
 				},
 				dataShape: {
 					primaryAxis: ['line', 'bar', 'bar']
+				},
+				window: {
+					start: 'firstDataPoint',
+					end: 'lastDataPoint'
 				}
 			},
 			title: {

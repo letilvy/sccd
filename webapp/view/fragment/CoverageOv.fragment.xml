@@ -41,6 +41,10 @@
 				},
 				dataShape: {
 					primaryAxis: ['line']
+				},
+				window: {
+					start: 'firstDataPoint',
+					end: 'lastDataPoint'
 				}
 			},
 			interaction: {
@@ -57,8 +61,8 @@
 					<viz.data:DimensionDefinition name="Team" value="{teamName}" />
 				</viz.data:dimensions>
 				<viz.data:measures>
-					<viz.data:MeasureDefinition name="Code Lines" value="{includeLine}"/>
-					<viz.data:MeasureDefinition name="Coverage" value="{includeCover}"/>
+					<viz.data:MeasureDefinition name="Code Lines" value="{includedLine}"/>
+					<viz.data:MeasureDefinition name="Coverage" value="{includedCover}"/>
 				</viz.data:measures>
 			</viz.data:FlattenedDataset>
 		</viz:dataset>

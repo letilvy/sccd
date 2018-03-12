@@ -93,6 +93,10 @@
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/mockdata/kpi.json"
 			},
+			"testoverview": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/mockdata/test_ov.json"
+			},
 			"utoverview": {
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/mockdata/ut.json"

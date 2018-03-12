@@ -22,7 +22,7 @@ sap.ui.define([
 
 		onInit: function(){
 			this.getRouter().getRoute("home").attachPatternMatched(this.onLoadHome, this);
-			this.byId(this.mUiId.ChartContainer).setModel(this.getModel("utoverview"));
+			this.byId(this.mUiId.ChartContainer).setModel(this.getModel("testoverview"));
 
 			this.connectPopoverToVizFrame();
 

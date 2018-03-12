@@ -149,6 +149,10 @@
 										dataLabel: {
 											visible: true,
 											showTotal: true
+										},
+										window: {
+											start: 'firstDataPoint',
+											end: 'lastDataPoint'
 										}
 									},
 									interaction: {
@@ -166,8 +170,8 @@
 											<viz.data:DimensionDefinition name="Team" value="{teamName}"/>
 										</viz.data:dimensions>
 										<viz.data:measures>
-											<viz.data:MeasureDefinition name="Unit Test" value="{passed}"/>
-											<viz.data:MeasureDefinition name="Integration Test" value="{failed}"/>
+											<viz.data:MeasureDefinition name="Unit Test" value="{totalUT}"/>
+											<viz.data:MeasureDefinition name="Integration Test" value="{totalIT}"/>
 										</viz.data:measures>
 									</viz.data:FlattenedDataset>
 								</viz:dataset>

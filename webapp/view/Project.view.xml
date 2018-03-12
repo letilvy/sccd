@@ -17,7 +17,7 @@
 			<OverflowToolbar id="appToolbar">
 				<Button icon="sap-icon://nav-back" type="Transparent" press="navBack"/>
 				<ToolbarSpacer/>
-				<Title text="{/0/pid}" />
+				<Title id="title_testcase_history" text="{/0/projectName}" />
 				<ToolbarSpacer/>
 				<commons:ChartContainerToolbarPlaceholder/>
 			</OverflowToolbar>
@@ -32,26 +32,35 @@
 						id="vf_project_case"
 						height="100%"
 						width="100%"
-						vizType="stacked_combination"
+						vizType="combination"
 						vizProperties="{
 							title: {
 								visible: false
 							},
 							plotArea: {
-								colorPalette: ['sapUiChartPaletteQualitativeHue1', '#bb0000', '#b6d957'],
+								colorPalette: ['sapUiChartPaletteSequentialHue1', '#b6d957', '#bb0000'],
 								dataLabel: {
 									visible: true,
 									showTotal: true
 								},
 								dataShape: {
 									primaryAxis: ['line', 'bar', 'bar']
+								},
+								window: {
+									start: 'firstDataPoint',
+									end: 'lastDataPoint'
+								}
+							},
+							valueAxis: {
+								title: {
+									visible: false
 								}
 							},
 							categoryAxis: {
-		                        title: {
-		                            visible: true
-		                        }
-		                    },
+								title: {
+									visible: false
+								}
+							},
 							interaction: {
 								selectability: {
 									mode: 'single'
@@ -60,7 +69,14 @@
 						}"
 						uiConfig="{applicationSet:'fiori'}">
 						<viz:dataset>
-							<viz.data:FlattenedDataset data="{/}">
+							<viz.data:FlattenedDataset
+								data="{
+									path: '/',
+									sorter: {
+										path: 'timestamp',
+										descending: false
+									}
+								}">
 								<viz.data:dimensions>
 									<viz.data:DimensionDefinition
 										name="Date"
@@ -74,12 +90,20 @@
 									<viz.data:MeasureDefinition name="Assertion" value="{assertion}"/>
 									<viz.data:MeasureDefinition name="Passed" value="{passed}"/>
 									<viz.data:MeasureDefinition name="Failed" value="{failed}"/>
+									<!-- <viz.data:MeasureDefinition name="Case" value="{= ${passed} + ${failed} }"/> -->  <!-- Not sure why expression binding does not take effect here --> 
+									<viz.data:MeasureDefinition name="Case" value="{
+											parts: [
+												'passed',
+												'failed'
+											],
+											formatter: '.Formatter.sumCase'
+										}"/>
 								</viz.data:measures>
 							</viz.data:FlattenedDataset>
 						</viz:dataset>
 						<viz:feeds>
 							<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Date" />
-							<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Assertion,Failed,Passed" />
+							<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Assertion,Case" />
 						</viz:feeds>
 					</viz:VizFrame>
 				</commons:content>

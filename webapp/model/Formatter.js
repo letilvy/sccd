@@ -12,6 +12,16 @@ sap.ui.define([
 								
 				return sYear + "-" + sMonth + "-" + sDay;
 			}
+		},
+
+		sumCase: function(aCase){
+			var iTotal = 0;
+			if(Array.isArray(aCase) && aCase.length){
+				aCase.forEach(function(iCase){
+					iTotal += iCase;
+				});
+			}
+			return iTotal;
 		}
 	};
 });

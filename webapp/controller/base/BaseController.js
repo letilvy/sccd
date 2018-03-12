@@ -39,13 +39,24 @@ sap.ui.define([
 			}
 		},
 
-		getProjectIdByName: function(sName){
-			return "sap.b1.smp.pum";
+		/* 
+			bReturnId = true: return project id. sText must be the project name.
+			bReturnId = false: return project name. sText must be the project id.
+		*/
+		getProjectIdOrName: function(sText, bReturnId){
+			var aData = this.getModel("testoverview").getData();
+			for(var i=0; i<aData.length; i++){
+				if(bReturnId && aData[i].projectName === sText){
+					return aData[i].projectId;
+				}else if(!bReturnId && aData[i].projectId === sText){
+					return aData[i].projectName;
+				}
+			}
 		},
 
 		showTestCaseHistory: function(sVFId, oEvent){
 			var sPName = this.byId(sVFId).vizSelection()[0].data.Project;
-			var sPId = this.getProjectIdByName(sPName);
+			var sPId = this.getProjectIdOrName(sPName, true);
 			this.byId(sVFId).vizSelection([], {
 			    clearSelection: true
 			});

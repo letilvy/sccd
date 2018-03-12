@@ -33,6 +33,20 @@
 								dataLabel: {
 									visible: true,
 									showTotal: true
+								},
+								window: {
+									start: 'firstDataPoint',
+									end: 'lastDataPoint'
+								}
+							},
+							valueAxis: {
+								title: {
+									visible: false
+								}
+							},
+							categoryAxis: {
+								title: {
+									visible: false
 								}
 							},
 							interaction: {

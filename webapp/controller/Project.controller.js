@@ -29,6 +29,10 @@ sap.ui.define([
 					colorPalette: this.getModel("config").getProperty("/colorPalette/" + oArgv.testtype + "/project"),
 				}
 			});
+
+			this.byId("title_testcase_history").setText(this.getResourceBundle().getText("titleProject" + oArgv.testtype.toUpperCase() + "History", [
+				this.byId(this.mUiId.ChartContainer).getModel().getData()[0].projectName
+			]));
 		}
 	});
 });

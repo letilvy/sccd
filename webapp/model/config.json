@@ -2,11 +2,11 @@
 	"colorPalette": {
 		"ut": {
 			"overview": ["#bb0000", "#b6d957"],
-			"project": ["sapUiChartPaletteQualitativeHue1", "#bb0000", "#b6d957"]
+			"project": ["sapUiChartPaletteQualitativeHue1", "#b6d957", "#bb0000"]
 		},
 		"it": {
 			"overview": ["sapUiChartPaletteQualitativeHue2", "sapUiChartPaletteQualitativeHue3"],
-			"project": ["sapUiChartPaletteQualitativeHue1", "sapUiChartPaletteQualitativeHue2", "sapUiChartPaletteQualitativeHue3"]
+			"project": ["sapUiChartPaletteQualitativeHue1", "sapUiChartPaletteQualitativeHue3", "sapUiChartPaletteQualitativeHue2"]
 		}
 	}
 }
