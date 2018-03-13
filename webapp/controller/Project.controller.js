@@ -22,7 +22,10 @@ sap.ui.define([
 		_onProjectMatched: function(oEvent){
 			var oArgv = oEvent.getParameter("arguments");
 
-			this.byId(this.mUiId.ChartContainer).setModel(this.getModel(oArgv.testtype + "project"));
+			this.setTestType(oArgv.testtype);
+			
+			var oModelProject = this.getModel(oArgv.testtype + "project");
+			this.byId(this.mUiId.ChartContainer).setModel(oModelProject);
 
 			this.byId(this.mUiId.VizFrame).setVizProperties({
 				plotArea: {
@@ -30,9 +33,11 @@ sap.ui.define([
 				}
 			});
 
-			this.byId("title_testcase_history").setText(this.getResourceBundle().getText("titleProject" + oArgv.testtype.toUpperCase() + "History", [
-				this.byId(this.mUiId.ChartContainer).getModel().getData()[0].projectName
-			]));
+			if(Array.isArray(oModelProject.getData()) && oModelProject.getData().length){ 
+				this.byId("title_testcase_history").setText(this.getResourceBundle().getText("titleProject" + oArgv.testtype.toUpperCase() + "History", [
+					oModelProject.getData()[0].projectName
+				]));
+			}
 		}
 	});
 });

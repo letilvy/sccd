@@ -17,7 +17,7 @@
 			<OverflowToolbar id="appToolbar">
 				<Button icon="sap-icon://nav-back" type="Transparent" press="navBack"/>
 				<ToolbarSpacer/>
-				<Title id="title_testcase_history" text="{/0/projectName}" />
+				<Title id="title_testcase_history"/>
 				<ToolbarSpacer/>
 				<commons:ChartContainerToolbarPlaceholder/>
 			</OverflowToolbar>

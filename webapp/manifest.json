@@ -107,11 +107,18 @@
 			},
 			"utproject": {
 				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/mockdata/project_ut.json"
+				"uri": "model/mockdata/project_ut.json",
+				"defaultBindingMode": "OneWay",
+				"settings": {
+					"defaultBindingMode": "OneWay"
+				}
 			},
 			"itproject": {
 				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/mockdata/project_it.json"
+				"uri": "model/mockdata/project_it.json",
+				"settings": {
+					"defaultBindingMode": "OneWay"
+				}
 			}
 		},
 		"routing": {
