@@ -21,7 +21,8 @@ sap.ui.define([
 		Formatter: Formatter,
 
 		onInit: function(){
-			this.getRouter().getRoute("home").attachPatternMatched(this.onLoadHome, this);
+			this.getRouter().getRoute("home").attachPatternMatched(this.onHomeMatched, this);
+			
 			this.byId(this.mUiId.ChartContainer).setModel(this.getModel("testoverview"));
 
 			this.connectPopoverToVizFrame();
@@ -49,17 +50,18 @@ sap.ui.define([
             }));
 		},
 
-		onLoadHome: function(){
-			this.getModel().read("/UTSet", {
-				urlParameters: {
-					pid: "sbou01"
-				},
+		onHomeMatched: function(){
+			this.getModel().read("/HomeSet", {
 				success: function(oData, oResponse){
-
-				},
-				error: function(oError){
-
-				}
+					this.getModel("testoverview").setData(JSON.parse(oData));
+				}.bind(this),
+				error: this.serviceErrorHandler
+			});
+			this.getModel().read("/KpiSet", {
+				success: function(oData, oResponse){
+					this.getModel("kpi").setData(JSON.parse(oData));
+				}.bind(this),
+				error: this.serviceErrorHandler
 			});
 		},
 
@@ -81,9 +83,14 @@ sap.ui.define([
 		},
 
 		onChangeCCContent: function(oEvent){
-			this.byId("select_test_type_chart").setVisible(
-				oEvent.getParameter("selectedItemId") === this.byId(this.mUiId.VizFrame).getId()
-			);
+			if(oEvent.getParameter("selectedItemId") === this.byId(this.mUiId.VizFrame).getId()){
+				//Make change chart type select box visible in test type chart view
+				this.byId("select_test_type_chart").setVisible(true);
+			}else{
+				this.byId("select_test_type_chart").setVisible(false);
+				//Set test type always to ut when in coverage chart view
+				this.setTestType("ut");
+			}
 		},
 
 		onChangeChartType: function(oEvent){

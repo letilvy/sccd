@@ -15,17 +15,14 @@ sap.ui.define([
 		Formatter: Formatter,
 
 		onInit: function(){
-			this.getRouter().getRoute("project").attachPatternMatched(this._onProjectMatched, this);
+			this.getRouter().getRoute("project").attachPatternMatched(this.onProjectMatched, this);
 			this.connectPopoverToVizFrame(false);
 		},
 
-		_onProjectMatched: function(oEvent){
+		onProjectMatched: function(oEvent){
 			var oArgv = oEvent.getParameter("arguments");
 
 			this.setTestType(oArgv.testtype);
-			
-			var oModelProject = this.getModel(oArgv.testtype + "project");
-			this.byId(this.mUiId.ChartContainer).setModel(oModelProject);
 
 			this.byId(this.mUiId.VizFrame).setVizProperties({
 				plotArea: {
@@ -33,11 +30,24 @@ sap.ui.define([
 				}
 			});
 
-			if(Array.isArray(oModelProject.getData()) && oModelProject.getData().length){ 
-				this.byId("title_testcase_history").setText(this.getResourceBundle().getText("titleProject" + oArgv.testtype.toUpperCase() + "History", [
-					oModelProject.getData()[0].projectName
-				]));
-			}
+			var oModelProject = this.getModel(oArgv.testtype + "project");
+			this.byId(this.mUiId.ChartContainer).setModel(oModelProject);
+
+			this.getModel().read("/" + oArgv.testtype.toUpperCase() + "Set", {
+				urlParameters: {
+					pid: oArgv.pid
+				},
+				success: function(oData, oResponse){
+					var aHistory = JSON.parse(oData);
+					oModelProject.setData(aHistory);
+					if(Array.isArray(aHistory) && aHistory.length){ 
+						this.byId("title_testcase_history").setText(this.getResourceBundle().getText("titleProject" + oArgv.testtype.toUpperCase() + "History", [
+							aHistory[0].projectName
+						]));
+					}
+				}.bind(this),
+				error: this.serviceErrorHandler
+			});
 		}
 	});
 });

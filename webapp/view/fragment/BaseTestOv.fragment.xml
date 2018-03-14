@@ -85,9 +85,16 @@
 						itemPress="onPressProject"
 						items="{
 							path: '/',
-							sorter: {
-								path: 'pid'
-							}
+							sorter: [{
+								path: 'teamName',
+								descending: false,
+								group: true
+							},{
+								path: 'assertion',
+								descending: true,
+								group: false
+							}],
+							groupHeaderFactory: '.getProjectGroupHeader'
 						}">
 						<columns>
 							<Column>

@@ -1,12 +1,12 @@
 {
-	"TotalProjects": 25,
-	"TopActive": [
-		{"ProjectName": "SaE", "TotalCase": 491},
-		{"ProjectName": "B1 SMP PUM", "TotalCase": 259},
-		{"ProjectName": "Note Search", "TotalCase": 91}
+	"totalProjects": 25,
+	"topActive": [
+		{"projectName": "SaE", "TotalCase": 491},
+		{"projectName": "B1 SMP PUM", "totalUT": 259},
+		{"projectName": "Note Search", "totalUT": 91}
 	],
-	"HealthyUTProjects": 20,
-	"HealthyITProjects": 16,
+	"healthyUTProjects": 20,
+	"healthyITProjects": 16,
 	"fillLevel": {
 		"threshold": 20,
 		"measure": "lb",

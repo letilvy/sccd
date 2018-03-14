@@ -5,7 +5,7 @@
 			"project": ["sapUiChartPaletteQualitativeHue1", "#b6d957", "#bb0000"]
 		},
 		"it": {
-			"overview": ["sapUiChartPaletteQualitativeHue2", "sapUiChartPaletteQualitativeHue3"],
+			"overview": ["#e78c07", "sapUiChartPaletteQualitativeHue3"],
 			"project": ["sapUiChartPaletteQualitativeHue1", "sapUiChartPaletteQualitativeHue3", "sapUiChartPaletteQualitativeHue2"]
 		}
 	}

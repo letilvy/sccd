@@ -30,6 +30,11 @@ sap.ui.define([
 			this.getRouter().initialize();
 			
 			this.setModel(new DataModel("/service/"));
+			this.getModel().read("/F4ProjectSet", {
+				success: function(oData, oResponse){
+					this.setModel(new JSONModel(JSON.parse(oData)), "f4project");
+				}.bind(this)
+			});
 		},
 
 		/**

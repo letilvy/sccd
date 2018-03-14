@@ -14,7 +14,7 @@
 			<HeaderContainer showDividers="true" class="sapUiTinyMarginTop">
 				<TileContent footer="Total Projects">
 					<content>
-						<NumericContent value="{kpi>/TotalProjects}"
+						<NumericContent value="{kpi>/totalProjects}"
 							valueColor="Neutral"
 							indicator="None"
 							icon="sap-icon://sap-ui5" />
@@ -24,12 +24,12 @@
 					<content>
 						<mc:ComparisonMicroChart
 							isResponsive="true"
-							data="{kpi>/TopActive}">
+							data="{kpi>/topActive}">
 							<mc:data>
 								<mc:ComparisonMicroChartData
-									title="{kpi>ProjectName}"
-									value="{kpi>TotalCase}"
-									displayValue="{kpi>TotalCase}"
+									title="{kpi>projectName}"
+									value="{kpi>totalUT}"
+									displayValue="{kpi>totalUT}"
 									color="Good" />
 							</mc:data>
 						</mc:ComparisonMicroChart>
@@ -40,22 +40,22 @@
 						<mc:DeltaMicroChart
 							isResponsive="true"
 							color="Error"
-							value1="{kpi>/TotalProjects}"
-							value2="{kpi>/HealthyUTProjects}"
+							value1="{kpi>/totalProjects}"
+							value2="{kpi>/healthyUTProjects}"
 							title1="{i18n>titleTotal}"
 							title2="{i18n>titleUnhealthyUTProject}"
-							displayValue1="{kpi>/TotalProjects}"
-							displayValue2="{kpi>/HealthyUTProjects}"
+							displayValue1="{kpi>/totalProjects}"
+							displayValue2="{kpi>/healthyUTProjects}"
 							deltaDisplayValue="{
 								parts: [
-									'kpi>/TotalProjects',
-									'kpi>/HealthyUTProjects'
+									'kpi>/totalProjects',
+									'kpi>/healthyUTProjects'
 								],
 								formatter: '.getValuesDelta'
 							}" />
 					</content>
 				</TileContent>
-				<TileContent footer="UT Case Number">
+				<!-- <TileContent footer="UT Case Number">
 					<content>
 						<mc:LineMicroChart
 							size="Responsive"
@@ -75,22 +75,22 @@
 								y="{kpi>level}" />
 						</mc:LineMicroChart>
 					</content>
-				</TileContent>
+				</TileContent> -->
 				<TileContent footer="Healthy IT Projects">
 					<content>
 						<mc:DeltaMicroChart
 							isResponsive="true"
 							color="Critical"
-							value1="{kpi>/TotalProjects}"
-							value2="{kpi>/HealthyITProjects}"
+							value1="{kpi>/totalProjects}"
+							value2="{kpi>/healthyITProjects}"
 							title1="{i18n>titleTotal}"
 							title2="{i18n>titleUnhealthyITProject}"
-							displayValue1="{kpi>/TotalProjects}"
-							displayValue2="{kpi>/HealthyITProjects}"
+							displayValue1="{kpi>/totalProjects}"
+							displayValue2="{kpi>/healthyITProjects}"
 							deltaDisplayValue="{
 								parts: [
-									'kpi>/TotalProjects',
-									'kpi>/HealthyITProjects'
+									'kpi>/totalProjects',
+									'kpi>/healthyITProjects'
 								],
 								formatter: '.getValuesDelta'
 							}" />

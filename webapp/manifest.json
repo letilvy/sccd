@@ -90,32 +90,25 @@
 				"uri": "model/menu.json"
 			},
 			"kpi": {
-				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/mockdata/kpi.json"
+				"type": "sap.ui.model.json.JSONModel"
 			},
 			"testoverview": {
-				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/mockdata/test_ov.json"
+				"type": "sap.ui.model.json.JSONModel"
 			},
 			"utoverview": {
-				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/mockdata/ut.json"
+				"type": "sap.ui.model.json.JSONModel"
 			},
 			"itoverview": {
-				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/mockdata/it.json"
+				"type": "sap.ui.model.json.JSONModel"
 			},
 			"utproject": {
 				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/mockdata/project_ut.json",
-				"defaultBindingMode": "OneWay",
 				"settings": {
 					"defaultBindingMode": "OneWay"
 				}
 			},
 			"itproject": {
 				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/mockdata/project_it.json",
 				"settings": {
 					"defaultBindingMode": "OneWay"
 				}

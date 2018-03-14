@@ -44,7 +44,7 @@ sap.ui.define([
 			bReturnId = false: return project name. sText must be the project id.
 		*/
 		getProjectIdOrName: function(sText, bReturnId){
-			var aData = this.getModel("testoverview").getData();
+			var aData = this.getModel("f4project").getData();
 			for(var i=0; i<aData.length; i++){
 				if(bReturnId && aData[i].projectName === sText){
 					return aData[i].projectId;
@@ -88,6 +88,10 @@ sap.ui.define([
 		
 		getResourceBundle: function(){
 			return this.getOwnerComponent().getModel("i18n").getResourceBundle();
-		}	
+		},
+
+		serviceErrorHandler: function(oError){
+
+		}
 	});
 });
