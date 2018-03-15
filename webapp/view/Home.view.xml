@@ -40,16 +40,16 @@
 						<mc:DeltaMicroChart
 							isResponsive="true"
 							color="Error"
-							value1="{kpi>/totalProjects}"
-							value2="{kpi>/healthyUTProjects}"
+							value1="{kpi>/UTStatus/totalUTProjects}"
+							value2="{kpi>/UTStatus/healthyUTProjects}"
 							title1="{i18n>titleTotal}"
 							title2="{i18n>titleUnhealthyUTProject}"
-							displayValue1="{kpi>/totalProjects}"
-							displayValue2="{kpi>/healthyUTProjects}"
+							displayValue1="{kpi>/UTStatus/totalUTProjects}"
+							displayValue2="{kpi>/UTStatus/healthyUTProjects}"
 							deltaDisplayValue="{
 								parts: [
-									'kpi>/totalProjects',
-									'kpi>/healthyUTProjects'
+									'kpi>/UTStatus/totalUTProjects',
+									'kpi>/UTStatus/healthyUTProjects'
 								],
 								formatter: '.getValuesDelta'
 							}" />
@@ -81,16 +81,16 @@
 						<mc:DeltaMicroChart
 							isResponsive="true"
 							color="Critical"
-							value1="{kpi>/totalProjects}"
-							value2="{kpi>/healthyITProjects}"
+							value1="{kpi>/ITStatus/totalITProjects}"
+							value2="{kpi>/ITStatus/healthyITProjects}"
 							title1="{i18n>titleTotal}"
 							title2="{i18n>titleUnhealthyITProject}"
-							displayValue1="{kpi>/totalProjects}"
-							displayValue2="{kpi>/healthyITProjects}"
+							displayValue1="{kpi>/ITStatus/totalITProjects}"
+							displayValue2="{kpi>/ITStatus/healthyITProjects}"
 							deltaDisplayValue="{
 								parts: [
-									'kpi>/totalProjects',
-									'kpi>/healthyITProjects'
+									'kpi>/ITStatus/totalITProjects',
+									'kpi>/ITStatus/healthyITProjects'
 								],
 								formatter: '.getValuesDelta'
 							}" />
