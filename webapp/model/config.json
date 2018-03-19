@@ -1,10 +1,20 @@
 {
-	"colorPalette": {
-		"ut": {
+	"ut": {
+		"vizType": {
+			"overview": "stacked_bar",
+			"project": "dual_combination"
+		},
+		"colorPalette": {
 			"overview": ["#bb0000", "#b6d957"],
 			"project": ["sapUiChartPaletteQualitativeHue1", "#b6d957", "#bb0000"]
+		}
+	},
+	"it": {
+		"vizType": {
+			"overview": "stacked_bar",
+			"project": "combination"
 		},
-		"it": {
+		"colorPalette": {
 			"overview": ["#e78c07", "sapUiChartPaletteQualitativeHue3"],
 			"project": ["sapUiChartPaletteQualitativeHue1", "sapUiChartPaletteQualitativeHue3", "sapUiChartPaletteQualitativeHue2"]
 		}

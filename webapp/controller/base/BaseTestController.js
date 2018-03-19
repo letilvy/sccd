@@ -22,9 +22,11 @@ sap.ui.define([
 			this.byId(this.mUiId.ChartContainer).setTitle(
 				this.getResourceBundle().getText("title" + this.getTestType(true) + "Overview")
 			);
+			
+			this.byId(this.mUiId.VizFrame).setVizType(this.getModel("config").getProperty("/" + this.getTestType() + "/vizType/overview"));
 			this.byId(this.mUiId.VizFrame).setVizProperties({
 				plotArea: {
-					colorPalette: this.getModel("config").getProperty("/colorPalette/" + this.getTestType() + "/overview")
+					colorPalette: this.getModel("config").getProperty("/" + this.getTestType() + "/colorPalette/overview")
 				}
 			});
 

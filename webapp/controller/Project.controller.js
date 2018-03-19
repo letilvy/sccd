@@ -1,7 +1,8 @@
 sap.ui.define([
 	"sap/support/sccd/controller/base/BaseController",
-	"sap/support/sccd/model/Formatter"
-], function(BaseController, Formatter){
+	"sap/support/sccd/model/Formatter",
+	"sap/viz/ui5/controls/common/feeds/FeedItem"
+], function(BaseController, Formatter, FeedItem){
 	"use strict";
 
 	return BaseController.extend("sap.support.sccd.controller.Project", {
@@ -16,7 +17,13 @@ sap.ui.define([
 
 		onInit: function(){
 			this.getRouter().getRoute("project").attachPatternMatched(this.onProjectMatched, this);
+
 			this.connectPopoverToVizFrame(false);
+			this.oCoverageFeedItem = new FeedItem({ //Coverage feed which is only displayed in UT view
+				uid: "valueAxis2",
+				type: "Measure",
+				values: ["Coverage"/*, "Complete Code Coverage"*/]
+			});
 		},
 
 		onProjectMatched: function(oEvent){
@@ -24,9 +31,19 @@ sap.ui.define([
 
 			this.setTestType(oArgv.testtype);
 
-			this.byId(this.mUiId.VizFrame).setVizProperties({
+			var oVizFrame = this.byId(this.mUiId.VizFrame);
+			//Make sure to change FeedItem before changing VizType
+			oArgv.testtype.toUpperCase() === "UT" ? oVizFrame.addFeed(this.oCoverageFeedItem) : oVizFrame.removeFeed(this.oCoverageFeedItem);
+			oVizFrame.setVizType(this.getModel("config").getProperty("/" + oArgv.testtype + "/vizType/project"));
+			oVizFrame.setVizProperties({
 				plotArea: {
-					colorPalette: this.getModel("config").getProperty("/colorPalette/" + oArgv.testtype + "/project"),
+					colorPalette: this.getModel("config").getProperty("/" + oArgv.testtype + "/colorPalette/project"),
+					primaryValuesColorPalette: this.getModel("config").getProperty("/" + oArgv.testtype + "/colorPalette/project") //Only takes effect for UT view
+				},
+				valueAxis2: { //Only takes effect for UT view
+					title: {
+						visible: false
+					}
 				}
 			});
 

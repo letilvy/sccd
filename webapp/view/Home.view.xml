@@ -14,7 +14,8 @@
 			<HeaderContainer showDividers="true" class="sapUiTinyMarginTop">
 				<TileContent footer="Total Projects">
 					<content>
-						<NumericContent value="{kpi>/totalProjects}"
+						<NumericContent
+							value="{kpi>/totalProjects}"
 							valueColor="Neutral"
 							indicator="None"
 							icon="sap-icon://sap-ui5" />
