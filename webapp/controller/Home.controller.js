@@ -96,7 +96,7 @@ sap.ui.define([
 		onChangeChartType: function(oEvent){
 			var sKey = oEvent.getParameter("selectedItem").getKey();
 			if(sKey === "percentage"){
-				this.byId(this.mUiId.VizFrame).setVizType("100_stacked_column");
+				this.byId(this.mUiId.VizFrame).setVizType("100_stacked_bar"); //100_stacked_column
 				this.byId(this.mUiId.VizFrame).setVizProperties({
 					plotArea: {
 	                    dataLabel: {
@@ -107,7 +107,7 @@ sap.ui.define([
 	                }
 				});
 			}else{
-				this.byId(this.mUiId.VizFrame).setVizType("stacked_column");
+				this.byId(this.mUiId.VizFrame).setVizType("stacked_bar"); //stacked_column
 				this.byId(this.mUiId.VizFrame).setVizProperties({
 					plotArea: {
 	                    dataLabel: {
