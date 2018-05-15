@@ -10,12 +10,15 @@ sap.ui.define([
 		mUiId: {
 			ChartContainer: "cc_ov",
 			VizFrame: "vf_case",
-			Popover: "po_case"
+			Popover: "po_case",
+			CoverageColumn: "column_coverage"
 		},
 
 		onInit: function(){
 			this.getRouter().getRoute("utov").attachPatternMatched(this.onBaseTestOvMatched, this);
 			this.getRouter().getRoute("itov").attachPatternMatched(this.onBaseTestOvMatched, this);
+
+			this.byId(this.mUiId.CoverageColumn).setVisible(this.getTestType() === "ut");
 
 			this.byId(this.mUiId.ChartContainer).setModel(this.getModel(this.getTestType() + "overview"));
 

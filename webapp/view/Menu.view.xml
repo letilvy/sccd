@@ -1,13 +1,13 @@
 <mvc:View controllerName="sap.support.sccd.controller.Menu"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc">
-	<Page>
-		<customHeader>
+	<Page title="{i18n>appTitle}">
+		<!-- <customHeader>
 			<Toolbar>
 				<SearchField liveChange="onSearchMenu"/>
 				<Button type="Transparent" icon="sap-icon://action-settings" press="onConfig"/>
 			</Toolbar>
-		</customHeader>
+		</customHeader> -->
 		<content>
 			<Tree id="tree_menu"
 				mode="SingleSelectMaster"

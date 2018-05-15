@@ -1,0 +1,288 @@
+{
+	"maintData": [
+		{
+		    "tid": "tea1",
+		    "team": "Customer Incident Agency",
+		    "itTicket": 67,
+		    "customerTicket": 9,
+		    "quater": "2016-Q1"
+		},
+		{
+		    "tid": "tea1",
+		    "team": "Customer Incident Agency",
+		    "itTicket": 67,
+		    "customerTicket": 28,
+		    "quater": "2016-Q2"
+		},
+		{
+		    "tid": "tea1",
+		    "team": "Customer Incident Agency",
+		    "itTicket": 77,
+		    "customerTicket": 14,
+		    "quater": "2016-Q3"
+		},
+		{
+		    "tid": "tea1",
+		    "team": "Customer Incident Agency",
+		    "itTicket": 94,
+		    "customerTicket": 46,
+		    "quater": "2016-Q4"
+		},
+		{
+		    "tid": "tea1",
+		    "team": "Customer Incident Agency",
+		    "itTicket": 44,
+		    "customerTicket": 15,
+		    "quater": "2017-Q1"
+		},
+		{
+		    "tid": "tea1",
+		    "team": "Customer Incident Agency",
+		    "itTicket": 15,
+		    "customerTicket": 15,
+		    "quater": "2017-Q2"
+		},
+		{
+		    "tid": "tea1",
+		    "team": "Customer Incident Agency",
+		    "itTicket": 5,
+		    "customerTicket": 28,
+		    "quater": "2017-Q3"
+		},
+		{
+		    "tid": "tea1",
+		    "team": "Customer Incident Agency",
+		    "itTicket": 20,
+		    "customerTicket": 13,
+		    "quater": "2017-Q4"
+		},
+
+		{
+		    "tid": "tea2",
+		    "team": "CSSNG BCD",
+		    "itTicket": 78,
+		    "customerTicket": 2,
+		    "quater": "2016-Q1"
+		},
+		{
+		    "tid": "tea2",
+		    "team": "CSSNG BCD",
+		    "itTicket": 149,
+		    "customerTicket": 2,
+		    "quater": "2016-Q2"
+		},
+		{
+		    "tid": "tea2",
+		    "team": "CSSNG BCD",
+		    "itTicket": 128,
+		    "customerTicket": 7,
+		    "quater": "2016-Q3"
+		},
+		{
+		    "tid": "tea2",
+		    "team": "CSSNG BCD",
+		    "itTicket": 140,
+		    "customerTicket": 10,
+		    "quater": "2016-Q4"
+		},
+		{
+		    "tid": "tea2",
+		    "team": "CSSNG BCD",
+		    "itTicket": 188,
+		    "customerTicket": 3,
+		    "quater": "2017-Q1"
+		},
+		{
+		    "tid": "tea2",
+		    "team": "CSSNG BCD",
+		    "itTicket": 218,
+		    "customerTicket": 2,
+		    "quater": "2017-Q2"
+		},
+		{
+		    "tid": "tea2",
+		    "team": "CSSNG BCD",
+		    "itTicket": 160,
+		    "customerTicket": 3,
+		    "quater": "2017-Q3"
+		},
+		{
+		    "tid": "tea2",
+		    "team": "CSSNG BCD",
+		    "itTicket": 208,
+		    "customerTicket": 1,
+		    "quater": "2017-Q4"
+		},
+
+		{
+		    "tid": "cteg",
+		    "team": "Customer Engagement",
+		    "itTicket": 3,
+		    "customerTicket": 0,
+		    "quater": "2016-Q1"
+		},
+		{
+		    "tid": "cteg",
+		    "team": "Customer Engagement",
+		    "itTicket": 4,
+		    "customerTicket": 3,
+		    "quater": "2016-Q2"
+		},
+		{
+		    "tid": "cteg",
+		    "team": "Customer Engagement",
+		    "itTicket": 7,
+		    "customerTicket": 2,
+		    "quater": "2016-Q3"
+		},
+		{
+		    "tid": "cteg",
+		    "team": "Customer Engagement",
+		    "itTicket": 5,
+		    "customerTicket": 0,
+		    "quater": "2016-Q4"
+		},
+		{
+		    "tid": "cteg",
+		    "team": "Customer Engagement",
+		    "itTicket": 1,
+		    "customerTicket": 7,
+		    "quater": "2017-Q1"
+		},
+		{
+		    "tid": "cteg",
+		    "team": "Customer Engagement",
+		    "itTicket": 9,
+		    "customerTicket": 7,
+		    "quater": "2017-Q2"
+		},
+		{
+		    "tid": "cteg",
+		    "team": "Customer Engagement",
+		    "itTicket": 9,
+		    "customerTicket": 8,
+		    "quater": "2017-Q3"
+		},
+		{
+		    "tid": "cteg",
+		    "team": "Customer Engagement",
+		    "itTicket": 2,
+		    "customerTicket": 3,
+		    "quater": "2017-Q4"
+		},
+
+		{
+		    "tid": "sysd",
+		    "team": "System Data",
+		    "itTicket": 0,
+		    "customerTicket": 6,
+		    "quater": "2016-Q1"
+		},
+		{
+		    "tid": "sysd",
+		    "team": "System Data",
+		    "itTicket": 21,
+		    "customerTicket": 43,
+		    "quater": "2016-Q2"
+		},
+		{
+		    "tid": "sysd",
+		    "team": "System Data",
+		    "itTicket": 1,
+		    "customerTicket": 49,
+		    "quater": "2016-Q3"
+		},
+		{
+		    "tid": "sysd",
+		    "team": "System Data",
+		    "itTicket": 2,
+		    "customerTicket": 31,
+		    "quater": "2016-Q4"
+		},
+		{
+		    "tid": "sysd",
+		    "team": "System Data",
+		    "itTicket": 0,
+		    "customerTicket": 26,
+		    "quater": "2017-Q1"
+		},
+		{
+		    "tid": "sysd",
+		    "team": "System Data",
+		    "itTicket": 0,
+		    "customerTicket": 15,
+		    "quater": "2017-Q2"
+		},
+		{
+		    "tid": "sysd",
+		    "team": "System Data",
+		    "itTicket": 6,
+		    "customerTicket": 9,
+		    "quater": "2017-Q3"
+		},
+		{
+		    "tid": "sysd",
+		    "team": "System Data",
+		    "itTicket": 0,
+		    "customerTicket": 12,
+		    "quater": "2017-Q4"
+		},
+
+		{
+		    "tid": "note",
+		    "team": "Note",
+		    "itTicket": 2,
+		    "customerTicket": 7,
+		    "quater": "2016-Q1"
+		},
+		{
+		    "tid": "note",
+		    "team": "Note",
+		    "itTicket": 2,
+		    "customerTicket": 19,
+		    "quater": "2016-Q2"
+		},
+		{
+		    "tid": "note",
+		    "team": "Note",
+		    "itTicket": 6,
+		    "customerTicket": 23,
+		    "quater": "2016-Q3"
+		},
+		{
+		    "tid": "note",
+		    "team": "Note",
+		    "itTicket": 2,
+		    "customerTicket": 13,
+		    "quater": "2016-Q4"
+		},
+		{
+		    "tid": "note",
+		    "team": "Note",
+		    "itTicket": 1,
+		    "customerTicket": 21,
+		    "quater": "2017-Q1"
+		},
+		{
+		    "tid": "note",
+		    "team": "Note",
+		    "itTicket": 4,
+		    "customerTicket": 16,
+		    "quater": "2017-Q2"
+		},
+		{
+		    "tid": "note",
+		    "team": "Note",
+		    "itTicket": 0,
+		    "customerTicket": 16,
+		    "quater": "2017-Q3"
+		},
+		{
+		    "tid": "note",
+		    "team": "Note",
+		    "itTicket": 0,
+		    "customerTicket": 13,
+		    "quater": "2017-Q4"
+		}
+	]
+}

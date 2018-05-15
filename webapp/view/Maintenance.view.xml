@@ -1,0 +1,32 @@
+<mvc:View controllerName="sap.support.sccd.controller.Maintenance" 
+	xmlns="sap.suite.ui.commons"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:m="sap.m"
+	xmlns:viz="sap.viz.ui5.controls">
+	<ChartContainer 
+		id="maintPage"
+		showFullScreen="true"
+		showPersonalization="false"
+		autoAdjustHeight="true"
+		title="">
+		<toolbar>
+			<m:OverflowToolbar>
+				<m:Title text="{i18n>titleMaintenanceOverview}" />
+				<m:ToolbarSpacer/>
+				<m:Select id="teamMaintSelect" items="{path: 'team>/'}" selectedKey="all" change="onTeamSelect">
+					<core:Item key="{team>tid}" text="{team>name}"/>
+				</m:Select>
+				<ChartContainerToolbarPlaceholder></ChartContainerToolbarPlaceholder>
+			</m:OverflowToolbar>
+		</toolbar>		
+		<content>
+			<ChartContainerContent icon="sap-icon://horizontal-stacked-chart">
+				<content>
+					<viz:Popover id="miantPopOver"></viz:Popover>
+					<viz:VizFrame id="maintVizFrame" height="100%" width="100%" uiConfig="{applicationSet:'fiori'}"></viz:VizFrame>
+				</content>
+			</ChartContainerContent>
+		</content>
+	</ChartContainer>
+</mvc:View>

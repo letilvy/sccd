@@ -16,5 +16,11 @@
 		"routeParam": null,
 		"text": "Integration Test",
 		"ref": "sap-icon://machine"
+	},
+	{
+		"route": "maintenance",
+		"routeParam": null,
+		"text": "Maintenance",
+		"ref": "sap-icon://cancel-maintenance"
 	}
 ]

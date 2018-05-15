@@ -2,21 +2,32 @@
 	"ut": {
 		"vizType": {
 			"overview": "stacked_bar",
-			"project": "dual_combination"
+			"project": "dual_stacked_combination"
 		},
 		"colorPalette": {
 			"overview": ["#bb0000", "#b6d957"],
-			"project": ["sapUiChartPaletteQualitativeHue1", "#b6d957", "#bb0000"]
+			"project": ["#e8743b", "#bb0000", "#b6d957"]
+		},
+		"dataShape": {
+			"project": {
+				"primaryAxis": ["line", "bar", "bar"],
+				"secondaryAxis": ["line","line"]
+			}
 		}
 	},
 	"it": {
 		"vizType": {
 			"overview": "stacked_bar",
-			"project": "combination"
+			"project": "stacked_combination"
 		},
 		"colorPalette": {
-			"overview": ["#e78c07", "sapUiChartPaletteQualitativeHue3"],
-			"project": ["sapUiChartPaletteQualitativeHue1", "sapUiChartPaletteQualitativeHue3", "sapUiChartPaletteQualitativeHue2"]
+			"overview": ["#e78c07", "#4cba6b"],
+			"project": ["#828af7","#e78c07","#4cba6b"]
+		},
+		"dataShape": {
+			"project": {
+				"primaryAxis": ["line", "bar", "bar"]
+			}
 		}
 	}
 }

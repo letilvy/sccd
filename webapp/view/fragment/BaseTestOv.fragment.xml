@@ -124,6 +124,13 @@
 								hAlign="Center">
 								<Text text="{i18n>colTitleAssertionCnt}"/>
 							</Column>
+							<Column
+								id="column_coverage"
+								minScreenWidth="Tablet"
+								demandPopin="true"
+								hAlign="Center">
+								<Text text="{i18n>colTitleCoverage}"/>
+							</Column>
 						</columns>
 						<items>
 							<ColumnListItem type="Navigation">
@@ -133,6 +140,7 @@
 									<ObjectStatus text="{failed}" state="{=${failed} > 0 ? 'Error' : 'None'}"/>
 									<ObjectStatus text="{skipped}" state="{=${skipped} > 0 ? 'Warning' : 'None'}"/>
 									<ObjectStatus text="{assertion}" state="None"/>
+									<ObjectStatus text="{= parseInt(${includedCover}*100) + '%' }" state="{= ${includedCover} >= 0.6 ? 'Success' : 'Warning'}"/>
 								</cells>
 							</ColumnListItem>
 						</items>

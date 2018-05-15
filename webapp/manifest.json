@@ -148,6 +148,11 @@
 					"pattern": "project/{pid}/{testtype}",
 					"name": "project",
 					"target": ["master", "project"]
+				},
+				{
+					"pattern": "maintenance",
+					"name": "maintenance",
+					"target": ["master", "maintenance"]
 				}
 			],
 			"targets": {
@@ -173,6 +178,11 @@
 				},
 				"project": {
 					"viewName": "Project",
+					"viewLevel": 2,
+					"controlAggregation": "detailPages"
+				},
+				"maintenance": {
+					"viewName": "Maintenance",
 					"viewLevel": 2,
 					"controlAggregation": "detailPages"
 				}

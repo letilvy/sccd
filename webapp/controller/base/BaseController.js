@@ -24,16 +24,18 @@ sap.ui.define([
 				Object.keys(this.mUiId).forEach(function(sKey){
 					if(oReg.exec(sKey)){
 						var oPopover = this.byId(this.mUiId["Popover" + oReg.exec(sKey)[1]]);
-						if(bAddAction){
-							oPopover.setActionItems([{
-								type: "action",
-								text: this.getResourceBundle().getText("textShow" + this.getTestType(true) + "History"),
-								press: this.showTestCaseHistory.bind(this, this.mUiId[sKey])
-							}]);
+						if(oPopover){
+							if(bAddAction){
+								oPopover.setActionItems([{
+										type: "action",
+										text: this.getResourceBundle().getText("textShow" + this.getTestType(true) + "History"),
+										press: this.showTestCaseHistory.bind(this, this.mUiId[sKey])
+									}]);
+							}
+							oPopover.connect(this.byId(this.mUiId[sKey]).getVizUid());									
+							/*var oTooltip = new sap.viz.ui5.controls.VizTooltip({});
+				            oTooltip.connect(this.byId(this.mUiId[sKey]).getVizUid());*/
 						}
-						oPopover.connect(this.byId(this.mUiId[sKey]).getVizUid());									
-						/*var oTooltip = new sap.viz.ui5.controls.VizTooltip({});
-			            oTooltip.connect(this.byId(this.mUiId[sKey]).getVizUid());*/
 					}
 				}, this);
 			}

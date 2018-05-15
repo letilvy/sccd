@@ -33,14 +33,15 @@
 				}
 			},
 			plotArea: {
-				primaryValuesColorPalette: ['sapUiChartPaletteSequentialHue1'],
-				secondaryValuesColorPalette: ['#b6d957'],
+				primaryValuesColorPalette: ['#e78c07', '#b6d957'],
+				secondaryValuesColorPalette: ['sapUiChartPaletteSequentialHue1'],
 				dataLabel: {
 					visible: true,
 					showTotal: true
 				},
 				dataShape: {
-					primaryAxis: ['line']
+					primaryAxis: ['bar','bar'],
+					secondaryAxis: ['line']
 				},
 				window: {
 					start: 'firstDataPoint',
@@ -61,14 +62,27 @@
 					<viz.data:DimensionDefinition name="Team" value="{teamName}" />
 				</viz.data:dimensions>
 				<viz.data:measures>
-					<viz.data:MeasureDefinition name="Code Lines" value="{includedLine}"/>
+					<viz.data:MeasureDefinition name="Code Line - Not Covered" value="{
+											parts: [
+												'includedLine',
+												'includedCover'
+											],
+											formatter: '.Formatter.calNotCoveredCodeLine'
+										}"/>
+					<viz.data:MeasureDefinition name="Code Line - Covered" value="{
+											parts: [
+												'includedLine',
+												'includedCover'
+											],
+											formatter: '.Formatter.calCoveredCodeLine'
+										}"/>
 					<viz.data:MeasureDefinition name="Coverage" value="{includedCover}"/>
 				</viz.data:measures>
 			</viz.data:FlattenedDataset>
 		</viz:dataset>
 		<viz:feeds>
-			<viz.feeds:FeedItem uid="valueAxis2" type="Measure" values="Code Lines" />
-			<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Coverage" />
+			<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Code Line - Not Covered,Code Line - Covered" />
+			<viz.feeds:FeedItem uid="valueAxis2" type="Measure" values="Coverage" />
 			<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Team,Project" />
 		</viz:feeds>
 	</viz:VizFrame>

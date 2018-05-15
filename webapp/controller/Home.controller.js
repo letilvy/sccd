@@ -27,27 +27,35 @@ sap.ui.define([
 
 			this.connectPopoverToVizFrame();
 
-			var oVfAllCoverage = this.byId(this.mUiId.VizFrameAllCoverage);
-			oVfAllCoverage.destroyDataset();
-			oVfAllCoverage.setDataset(new FlattenedDataset({
-                "dimensions": [{
-                    "name": "Project",
-                    "value": "{projectName}"
-                }, {
-                    "name": "Team",
-                    "value": "{teamName}"
-                }],
-                "measures": [{
-                    "name": "Code Lines",
-                    "value": "{allLine}"
-                }, {
-                    "name": "Coverage",
-                    "value": "{allCover}"
-                }],
-                data: {
-                    path: "/"
-                }
-            }));
+			/*
+			* Will always use all line coverage after demo
+			*
+			*var oVfAllCoverage = this.byId(this.mUiId.VizFrameAllCoverage);
+			if(oVfAllCoverage){
+				oVfAllCoverage.destroyDataset();
+				oVfAllCoverage.setDataset(new FlattenedDataset({
+	                "dimensions": [{
+	                    "name": "Project",
+	                    "value": "{projectName}"
+	                }, {
+	                    "name": "Team",
+	                    "value": "{teamName}"
+	                }],
+	                "measures": [{
+						"name": 'Code Line - Not Covered',
+						"value": '{notIncludedCoverLine}'
+					},{
+						"name": 'Code Line - Covered',
+						"value": '{allCoverLine}'
+					},{
+						"name": 'Coverage',
+						"value": '{allCover}'
+					}],
+	                data: {
+	                    path: "/"
+	                }
+	            }));
+			}*/
 		},
 
 		onHomeMatched: function(){

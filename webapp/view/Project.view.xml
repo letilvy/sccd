@@ -32,7 +32,7 @@
 						id="vf_project_case"
 						height="100%"
 						width="100%"
-						vizType="dual_combination"
+						vizType="dual_stacked_combination"
 						vizProperties="{
 							title: {
 								visible: false
@@ -44,7 +44,8 @@
 									showTotal: true
 								},
 								dataShape: {
-									primaryAxis: ['line', 'bar', 'bar']
+									primaryAxis: ['line', 'bar', 'bar'],
+									secondaryAxis: ['line','line']
 								},
 								window: {
 									start: 'firstDataPoint',
@@ -107,13 +108,13 @@
 											formatter: '.Formatter.sumCase'
 										}"/>
 									<viz.data:MeasureDefinition name="Coverage" value="{includedCover}"/>
-									<viz.data:MeasureDefinition name="Complete Code Coverage" value="{allCover}"/>
+									<!-- <viz.data:MeasureDefinition name="Complete Code Coverage" value="{allCover}"/> -->
 								</viz.data:measures>
 							</viz.data:FlattenedDataset>
 						</viz:dataset>
 						<viz:feeds>
 							<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Date" />
-							<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Assertion,Case" />
+							<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Assertion,Failed,Passed" />
 							<!-- <viz.feeds:FeedItem uid="valueAxis2" type="Measure" values="Coverage" /> -->
 						</viz:feeds>
 					</viz:VizFrame>

@@ -14,6 +14,18 @@ sap.ui.define([
 			}
 		},
 
+		calCoveredCodeLine: function(aCover){
+			if(Array.isArray(aCover) && aCover.length){
+				return parseInt(aCover[0] * aCover[1]);
+			}
+		},
+
+		calNotCoveredCodeLine: function(aCover){
+			if(Array.isArray(aCover) && aCover.length){
+				return aCover[0] - parseInt(aCover[0] * aCover[1]);
+			}
+		},
+
 		sumCase: function(aCase){
 			var iTotal = 0;
 			if(Array.isArray(aCase) && aCase.length){

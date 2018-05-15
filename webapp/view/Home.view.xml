@@ -146,7 +146,7 @@
 										}
 									},
 									plotArea: {
-										colorPalette: ['sapUiChartPaletteQualitativeHue5', 'sapUiChartPaletteQualitativeHue6', 'sapUiChartPaletteQualitativeHue7'],
+										colorPalette: ['#4cba6b','#b6d957'],
 										dataLabel: {
 											visible: true,
 											showTotal: true
@@ -194,13 +194,13 @@
 					</commons:ChartContainerContent>
 
 					<!-- Coverage of all lines -->
-					<commons:ChartContainerContent
+					<!-- <commons:ChartContainerContent
 						icon="sap-icon://horizontal-combination-chart"
 						title="{i18n>tooltipChartView}">
 						<commons:content>
 							<core:Fragment id="all" fragmentName="sap.support.sccd.view.fragment.CoverageOv" type="XML"/>
 						</commons:content>
-					</commons:ChartContainerContent>
+					</commons:ChartContainerContent> -->
 
 				</commons:content>
 			</commons:ChartContainer>

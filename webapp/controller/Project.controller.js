@@ -22,7 +22,7 @@ sap.ui.define([
 			this.oCoverageFeedItem = new FeedItem({ //Coverage feed which is only displayed in UT view
 				uid: "valueAxis2",
 				type: "Measure",
-				values: ["Coverage"/*, "Complete Code Coverage"*/]
+				values: ["Coverage"]
 			});
 		},
 
@@ -38,7 +38,9 @@ sap.ui.define([
 			oVizFrame.setVizProperties({
 				plotArea: {
 					colorPalette: this.getModel("config").getProperty("/" + oArgv.testtype + "/colorPalette/project"),
-					primaryValuesColorPalette: this.getModel("config").getProperty("/" + oArgv.testtype + "/colorPalette/project") //Only takes effect for UT view
+					primaryValuesColorPalette: this.getModel("config").getProperty("/" + oArgv.testtype + "/colorPalette/project"), //Only takes effect for UT view
+					secondaryValuesColorPalette: ["#5cbae6", "#5899da"],
+					dataShape: this.getModel("config").getProperty("/" + oArgv.testtype + "/dataShape/project")
 				},
 				valueAxis2: { //Only takes effect for UT view
 					title: {
