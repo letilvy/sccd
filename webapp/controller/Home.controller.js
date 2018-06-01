@@ -83,11 +83,7 @@ sap.ui.define([
 				default: sType = ""; break;
 			}
 			this.setTestType(sType);
-			this.byId(this.mUiId.Popover).setActionItems([{
-				type: "action",
-				text: this.getResourceBundle().getText("textShow" + this.getTestType(true) + "History"),
-				press: this.showTestCaseHistory.bind(this, this.mUiId.VizFrame)
-			}]);
+			this.byId(this.mUiId.Popover).setActionItems(this.getPopoverActionItems(this.mUiId.VizFrame));
 		},
 
 		onChangeCCContent: function(oEvent){

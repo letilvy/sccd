@@ -16,22 +16,36 @@ sap.ui.define([
 			this._sTestType = sType;
 		},
 
-		connectPopoverToVizFrame: function(bAddAction){
-			bAddAction = (typeof bAddAction === "undefined" ? true : bAddAction);
+		getPopoverActionItems: function(sVFId, oAction){
+			oAction = oAction || {};
+			oAction.history = (typeof oAction.history === "undefined" ? true : oAction.history);
+			oAction.coverage = (typeof oAction.coverage === "undefined" ? (this.getTestType(true) === "UT") : oAction.coverage);
+			var aAction = [];
+			if(oAction.history){
+				aAction.push({
+					type: "action",
+					text: this.getResourceBundle().getText("textShow" + this.getTestType(true) + "History"),
+					press: this.showTestCaseHistory.bind(this, sVFId)
+				});
+			}
+			if(oAction.coverage){
+				aAction.push({
+					type: "action",
+					text: this.getResourceBundle().getText("textShowCoverageReport"),
+					press: this.showCoverageReport.bind(this, sVFId)
+				});
+			}
+			return aAction;
+		},
 
+		connectPopoverToVizFrame: function(oAction){
 			if(this.mUiId){
 				var oReg = new RegExp(/^VizFrame(\w*)$/);
 				Object.keys(this.mUiId).forEach(function(sKey){
 					if(oReg.exec(sKey)){
 						var oPopover = this.byId(this.mUiId["Popover" + oReg.exec(sKey)[1]]);
 						if(oPopover){
-							if(bAddAction){
-								oPopover.setActionItems([{
-										type: "action",
-										text: this.getResourceBundle().getText("textShow" + this.getTestType(true) + "History"),
-										press: this.showTestCaseHistory.bind(this, this.mUiId[sKey])
-									}]);
-							}
+							oPopover.setActionItems(this.getPopoverActionItems(this.mUiId[sKey], oAction));
 							oPopover.connect(this.byId(this.mUiId[sKey]).getVizUid());									
 							/*var oTooltip = new sap.viz.ui5.controls.VizTooltip({});
 				            oTooltip.connect(this.byId(this.mUiId[sKey]).getVizUid());*/
@@ -66,6 +80,10 @@ sap.ui.define([
 				pid: sPId,
 				testtype: this.getTestType()
 			});
+		},
+
+		showCoverageReport: function(sVFId, oEvent){
+
 		},
 
 		getRouter: function(){

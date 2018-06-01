@@ -41,7 +41,7 @@ sap.ui.define([
 				return;
 			}
 
-			this.getModel().read("/" + this.getTestType().toUpperCase() + "Set", {
+			this.getModel().read("/" + this.getTestType(true) + "Set", {
 				success: function(oData, oResponse){
 					this.getModel(this.getTestType() + "overview").setData(JSON.parse(oData));
 				}.bind(this),

@@ -18,7 +18,6 @@ sap.ui.define([
 		onInit: function(){
 			this.getRouter().getRoute("project").attachPatternMatched(this.onProjectMatched, this);
 
-			this.connectPopoverToVizFrame(false);
 			this.oCoverageFeedItem = new FeedItem({ //Coverage feed which is only displayed in UT view
 				uid: "valueAxis2",
 				type: "Measure",
@@ -30,6 +29,9 @@ sap.ui.define([
 			var oArgv = oEvent.getParameter("arguments");
 
 			this.setTestType(oArgv.testtype);
+			this.connectPopoverToVizFrame({
+				history: false
+			});
 
 			var oVizFrame = this.byId(this.mUiId.VizFrame);
 			//Make sure to change FeedItem before changing VizType
