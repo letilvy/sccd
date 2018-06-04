@@ -1,11 +1,23 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"sap/ui/core/routing/History"
-], function(Controller, History){
+	"sap/ui/core/routing/History",
+	"sap/m/MessageBox"
+], function(Controller, History, MessageBox){
 	"use strict";
 	
 	return Controller.extend("sap.support.sccd.controller.BaseController", {
 		
+		ProjectType: {
+			UI5: "UI5",
+			ABAP: "ABA"
+		},
+
+		TestType: {
+			Unit: "UT",
+			Integration: "IT",
+			System: "ST"
+		},
+
 		_sTestType: "ut",
 
 		getTestType: function(bUpperCase){
@@ -19,7 +31,7 @@ sap.ui.define([
 		getPopoverActionItems: function(sVFId, oAction){
 			oAction = oAction || {};
 			oAction.history = (typeof oAction.history === "undefined" ? true : oAction.history);
-			oAction.coverage = (typeof oAction.coverage === "undefined" ? (this.getTestType(true) === "UT") : oAction.coverage);
+			oAction.coverage = (typeof oAction.coverage === "undefined" ? (this.getTestType(true) === this.TestType.Unit) : oAction.coverage);
 			var aAction = [];
 			if(oAction.history){
 				aAction.push({
@@ -70,20 +82,44 @@ sap.ui.define([
 			}
 		},
 
-		showTestCaseHistory: function(sVFId, oEvent){
+		getSelectedChartPieceData: function(sVFId, bClearSelection){
+			bClearSelection = (typeof bClearSelection === "undefined" ? true : bClearSelection);
+
 			var sPName = this.byId(sVFId).vizSelection()[0].data.Project;
 			var sPId = this.getProjectIdOrName(sPName, true);
-			this.byId(sVFId).vizSelection([], {
-			    clearSelection: true
-			});
-			this.getRouter().navTo("project", {
+
+			if(bClearSelection){
+				this.byId(sVFId).vizSelection([], {
+				    clearSelection: true
+				});
+			}
+			return {
 				pid: sPId,
-				testtype: this.getTestType()
+				ttype: this.getTestType(),
+				ptype: this.ProjectType.UI5, //TODO: replace with dynamic type
+			};
+		},
+
+		showTestCaseHistory: function(sVFId, oEvent){
+			var oSelectedData = this.getSelectedChartPieceData(sVFId);
+			this.getRouter().navTo("project", {
+				pid: oSelectedData.pid,
+				testtype: oSelectedData.ttype
 			});
 		},
 
 		showCoverageReport: function(sVFId, oEvent){
-
+			this.getModel().read("/JobSet", {
+				urlParameters: this.getSelectedChartPieceData(sVFId),
+				success: function(oData, oResponse){
+					var aJob = JSON.parse(oData);
+					if(Array.isArray(aJob) && aJob.length){ 
+						var win = window.open("http://mo-2b83de737.mo.sap.corp:8080/job/" + aJob[0].name + "/" + aJob[0].lastbuild +"/cobertura/"/*, '_blank'*/);
+						win.focus();
+					}
+				}.bind(this),
+				error: this.serviceErrorHandler
+			});
 		},
 
 		getRouter: function(){
@@ -111,7 +147,7 @@ sap.ui.define([
 		},
 
 		serviceErrorHandler: function(oError){
-
+			MessageBox.error(JSON.stringify(oError));
 		}
 	});
 });
