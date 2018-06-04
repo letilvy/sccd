@@ -1,8 +1,9 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/core/routing/History",
-	"sap/m/MessageBox"
-], function(Controller, History, MessageBox){
+	"sap/m/MessageBox",
+	"sap/m/MessageToast"
+], function(Controller, History, MessageBox, MessageToast){
 	"use strict";
 	
 	return Controller.extend("sap.support.sccd.controller.BaseController", {
@@ -85,8 +86,13 @@ sap.ui.define([
 		getSelectedChartPieceData: function(sVFId, bClearSelection){
 			bClearSelection = (typeof bClearSelection === "undefined" ? true : bClearSelection);
 
-			var sPName = this.byId(sVFId).vizSelection()[0].data.Project;
-			var sPId = this.getProjectIdOrName(sPName, true);
+			var oPiece = this.byId(sVFId).vizSelection()[0].data;
+			var sPId;
+			if(oPiece.Project){
+				sPId = this.getProjectIdOrName(oPiece.Project, true);
+			}else if(oPiece.Date){ //Project detail page
+				sPId = this.byId(sVFId).getModel().getData()[0].projectId;
+			}
 
 			if(bClearSelection){
 				this.byId(sVFId).vizSelection([], {
@@ -116,6 +122,8 @@ sap.ui.define([
 					if(Array.isArray(aJob) && aJob.length){ 
 						var win = window.open("http://mo-2b83de737.mo.sap.corp:8080/job/" + aJob[0].name + "/" + aJob[0].lastbuild +"/cobertura/"/*, '_blank'*/);
 						win.focus();
+					}else{
+						MessageToast.show("No coverage report detected.");
 					}
 				}.bind(this),
 				error: this.serviceErrorHandler
