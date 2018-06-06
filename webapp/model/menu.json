@@ -1,21 +1,51 @@
 [
 	{
-		"route": "home",
-		"routeParam": null,
 		"text": "Home",
-		"ref": "sap-icon://home"
+		"ref": "sap-icon://home",
+		"nodes": [
+			{
+				"route": "home",
+				"routeParam": "{\"ptype\": \"ui5\"}",
+				"text": "UI5",
+				"ref": "sap-icon://sap-ui5"
+			},
+			{
+				"route": "home",
+				"routeParam": "{\"ptype\": \"abap\"}",
+				"text": "ABAP",
+				"ref": "sap-icon://database"
+			}
+		]
 	},
 	{
-		"route": "utov",
-		"routeParam": null,
 		"text": "Unit Test",
-		"ref": "sap-icon://badge"
+		"ref": "sap-icon://badge",
+		"nodes": [
+			{
+				"route": "utov",
+				"routeParam": "{\"ptype\": \"ui5\"}",
+				"text": "UI5",
+				"ref": "sap-icon://sap-ui5"
+			},
+			{
+				"route": "utov",
+				"routeParam": "{\"ptype\": \"abap\"}",
+				"text": "ABAP",
+				"ref": "sap-icon://database"
+			}
+		]
 	},
 	{
-		"route": "itov",
-		"routeParam": null,
 		"text": "Integration Test",
-		"ref": "sap-icon://machine"
+		"ref": "sap-icon://machine",
+		"nodes": [
+			{
+				"route": "itov",
+				"routeParam": "{\"ptype\": \"ui5\"}",
+				"text": "UI5",
+				"ref": "sap-icon://sap-ui5"
+			}
+		]
 	},
 	{
 		"route": "maintenance",

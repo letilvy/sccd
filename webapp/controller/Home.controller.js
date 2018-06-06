@@ -1,12 +1,12 @@
 sap.ui.define([
-	"sap/support/sccd/controller/base/BaseController",
+	"sap/support/sccd/controller/base/AutoTestController",
 	"sap/support/sccd/model/Formatter",
 	"sap/ui/model/json/JSONModel",
 	"sap/viz/ui5/data/FlattenedDataset"
-], function(BaseController, Formatter, JSONModel, FlattenedDataset){
+], function(AutoTestController, Formatter, JSONModel, FlattenedDataset){
 	"use strict";
 
-	return BaseController.extend("sap.support.sccd.controller.Home", {
+	return AutoTestController.extend("sap.support.sccd.controller.Home", {
 
 		mUiId: {
 			ChartContainer: "cc_home",
@@ -58,14 +58,23 @@ sap.ui.define([
 			}*/
 		},
 
-		onHomeMatched: function(){
+		onHomeMatched: function(oEvent){
+			var oArgv = oEvent.getParameter("arguments");
+			this.setProjectType(oArgv.ptype);
+
 			this.getModel().read("/HomeSet", {
+				urlParameters: {
+					ptype: this.getProjectType(true)
+				},
 				success: function(oData, oResponse){
 					this.getModel("testoverview").setData(JSON.parse(oData));
 				}.bind(this),
 				error: this.serviceErrorHandler
 			});
 			this.getModel().read("/KpiSet", {
+				urlParameters: {
+					ptype: this.getProjectType(true)
+				},
 				success: function(oData, oResponse){
 					this.getModel("kpi").setData(JSON.parse(oData));
 				}.bind(this),

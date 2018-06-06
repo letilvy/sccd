@@ -23,7 +23,9 @@ sap.ui.define([
 
 		onPressMenuItem: function(oEvent){
 			var oMenuItem = oEvent.getParameter("listItem").getBindingContext("menu").getObject();
-			this.getRouter().navTo(oMenuItem.route, oMenuItem.routeParam);
+			if(oMenuItem.route){
+				this.getRouter().navTo(oMenuItem.route, JSON.parse(oMenuItem.routeParam));
+			}
 		}
 	});
 });

@@ -130,12 +130,12 @@
 					"target": ["master"]
 				},
 				{
-					"pattern": "home",
+					"pattern": "home/{ptype}",
 					"name": "home",
 					"target": ["master", "home"]
 				},
 				{
-					"pattern": "utov",
+					"pattern": "utov/{ptype}",
 					"name": "utov",
 					"target": ["master", "utoverview"]
 				},
@@ -145,7 +145,7 @@
 					"target": ["master", "itoverview"]
 				},
 				{
-					"pattern": "project/{pid}/{testtype}",
+					"pattern": "project/{pid}/{ptype}/{ttype}",
 					"name": "project",
 					"target": ["master", "project"]
 				},

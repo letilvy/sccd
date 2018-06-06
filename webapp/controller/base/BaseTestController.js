@@ -1,11 +1,14 @@
+/*
+ * Base Test Means: Unit Test and Integration Test 
+*/
 sap.ui.define([
-	"sap/support/sccd/controller/base/BaseController",
+	"sap/support/sccd/controller/base/AutoTestController",
 	"sap/ui/model/json/JSONModel",
 	"sap/m/GroupHeaderListItem"
-], function(BaseController, JSONModel, GroupHeaderListItem){
+], function(AutoTestController, JSONModel, GroupHeaderListItem){
 	"use strict";
 	
-	return BaseController.extend("sap.support.sccd.controller.BaseTestController", {
+	return AutoTestController.extend("sap.support.sccd.controller.BaseTestController", {
 		
 		mUiId: {
 			ChartContainer: "cc_ov",
@@ -40,8 +43,12 @@ sap.ui.define([
 			if(!oEvent.getParameter("name").match(this.getTestType())){
 				return;
 			}
+			this.setProjectType(oEvent.getParameter("arguments").ptype || this.ProjectType.UI5);
 
 			this.getModel().read("/" + this.getTestType(true) + "Set", {
+				urlParameters: {
+					ptype: this.getProjectType(true)
+				},
 				success: function(oData, oResponse){
 					this.getModel(this.getTestType() + "overview").setData(JSON.parse(oData));
 				}.bind(this),
@@ -60,7 +67,8 @@ sap.ui.define([
 			var sPid = oEvent.getParameter("listItem").getBindingContext().getProperty("projectId");
 			this.getRouter().navTo("project", {
 				pid: sPid,
-				testtype: this.getTestType()
+				ttype: this.getTestType(),
+				ptype: this.getProjectType(true)
 			});
 		}
 	});
