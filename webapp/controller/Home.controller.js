@@ -62,6 +62,15 @@ sap.ui.define([
 			var oArgv = oEvent.getParameter("arguments");
 			this.setProjectType(oArgv.ptype);
 
+			/*
+			 *	Quick workaround when IT of ABAP is not available
+			 */
+			this.byId("tc_top_3_active").setVisible(this.getProjectType(true) === this.ProjectType.UI5);
+			this.byId("tc_healthy_it").setVisible(this.getProjectType(true) === this.ProjectType.UI5);
+			/* Delete this switch when IT of ABAP is ready */
+
+			this.byId("nc_total_project").setIcon(this.getProjectType(true) === this.ProjectType.UI5 ? "sap-icon://sap-ui5":"sap-icon://database");
+
 			this.getModel().read("/HomeSet", {
 				urlParameters: {
 					ptype: this.getProjectType(true)

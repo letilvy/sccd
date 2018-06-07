@@ -12,16 +12,17 @@
 	<layout:FixFlex minFlexSize="250">
         <layout:fixContent>
 			<HeaderContainer showDividers="true" class="sapUiTinyMarginTop">
-				<TileContent footer="Total Projects">
+				<TileContent footer="{i18n>titleTotal}">
 					<content>
 						<NumericContent
+							id="nc_total_project"
 							value="{kpi>/totalProjects}"
 							valueColor="Neutral"
 							indicator="None"
 							icon="sap-icon://sap-ui5" />
 					</content>
 				</TileContent>
-				<TileContent unit="" footer="Top 3 Active">
+				<TileContent id="tc_top_3_active" unit="" footer="{i18n>titleTop3Active}">
 					<content>
 						<mc:ComparisonMicroChart
 							isResponsive="true"
@@ -36,7 +37,7 @@
 						</mc:ComparisonMicroChart>
 					</content>
 				</TileContent>
-				<TileContent footer="Healthy UT Projects">
+				<TileContent footer="{i18n>titleUnhealthyUTProject}">
 					<content>
 						<mc:DeltaMicroChart
 							isResponsive="true"
@@ -77,7 +78,7 @@
 						</mc:LineMicroChart>
 					</content>
 				</TileContent> -->
-				<TileContent footer="Healthy IT Projects">
+				<TileContent id="tc_healthy_it" footer="{i18n>titleUnhealthyITProject}">
 					<content>
 						<mc:DeltaMicroChart
 							isResponsive="true"
