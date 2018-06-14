@@ -1,3 +1,7 @@
+/*
+ * Need refactorying after maintenance DB table is ready
+*/
+
 sap.ui.define([
 	"sap/support/sccd/controller/base/BaseController",
     "sap/viz/ui5/format/ChartFormatter",

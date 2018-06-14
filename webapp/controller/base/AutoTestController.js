@@ -84,8 +84,14 @@ sap.ui.define([
 		*/
 		getProjectIdOrName: function(sText, bReturnId){
 			var aData = this.getModel("f4project").getData();
+			//Different type projects may share the same project name, so need to also match project id pattern here 
+			//  TODO: A more effective way that find selected chart pie's project id need to be research to 
+			//        replace getting project id by project name here
+			var oRegExpPId = this.getProjectType(true) === this.ProjectType.UI5 ? 
+									new RegExp(/sap\.support\./, "gi"):new RegExp(/sap\.abap\./, "gi");
+
 			for(var i=0; i<aData.length; i++){
-				if(bReturnId && aData[i].projectName === sText){
+				if(bReturnId && aData[i].projectName === sText && oRegExpPId.test(aData[i].projectId)){
 					return aData[i].projectId;
 				}else if(!bReturnId && aData[i].projectId === sText){
 					return aData[i].projectName;
