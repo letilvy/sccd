@@ -36,7 +36,11 @@ sap.ui.define([
 
 			var oVizFrame = this.byId(this.mUiId.VizFrame);
 			//Make sure to change FeedItem before changing VizType
-			oArgv.ttype.toUpperCase() === "UT" ? oVizFrame.addFeed(this.oCoverageFeedItem) : oVizFrame.removeFeed(this.oCoverageFeedItem);
+			if(oArgv.ttype.toUpperCase() === "UT"){
+				oVizFrame.addFeed(this.oCoverageFeedItem);
+			}else{
+				oVizFrame.removeFeed(this.oCoverageFeedItem);
+			} 
 			oVizFrame.setVizType(this.getModel("config").getProperty("/" + oArgv.ttype + "/vizType/project"));
 			oVizFrame.setVizProperties({
 				plotArea: {

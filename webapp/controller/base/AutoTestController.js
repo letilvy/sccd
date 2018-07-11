@@ -131,8 +131,10 @@ sap.ui.define([
 				urlParameters: this.getSelectedChartPieceData(sVFId),
 				success: function(oData, oResponse){
 					var aJob = JSON.parse(oData);
-					if(Array.isArray(aJob) && aJob.length){ 
+					if(Array.isArray(aJob) && aJob.length){
+						/* eslint-disable sap-no-hardcoded-url */
 						var win = window.open("http://mo-2b83de737.mo.sap.corp:8080/job/" + aJob[0].name + "/" + aJob[0].lastbuild +"/cobertura/"/*, '_blank'*/);
+						/* eslint-enable sap-no-hardcoded-url */
 						win.focus();
 					}else{
 						MessageToast.show(this.getResourceBundle().getText("msgNoCoverageReport"));

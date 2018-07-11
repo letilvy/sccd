@@ -11,7 +11,7 @@
 	<!-- define the artifactId for your project, e.g. application -->
 	<artifactId>sap.support.sccd</artifactId>
 	<!-- define the next wave / version for your application, it must be in format YEAR.WAVE.VERSION-SNAPSHOT, e.g. 2017.3.1-SNAPSHOT -->
-	<version>1.0.0</version>
+	<version>2018.5.1-SNAPSHOT</version>
 	
 	<!-- define a human readable name for your application, e.g. Application -->
 	<name>SAL CI/CD Dashboard</name>

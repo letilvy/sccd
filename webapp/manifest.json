@@ -83,35 +83,43 @@
 			},
 			"config": {
 				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/config.json"
+				"uri": "model/config.json",
+				"preload": false
 			},
 			"menu": {
 				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/menu.json"
+				"uri": "model/menu.json",
+				"preload": false
 			},
 			"kpi": {
-				"type": "sap.ui.model.json.JSONModel"
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": false
 			},
 			"testoverview": {
-				"type": "sap.ui.model.json.JSONModel"
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": false
 			},
 			"utoverview": {
-				"type": "sap.ui.model.json.JSONModel"
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": false
 			},
 			"itoverview": {
-				"type": "sap.ui.model.json.JSONModel"
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": false
 			},
 			"utproject": {
 				"type": "sap.ui.model.json.JSONModel",
 				"settings": {
 					"defaultBindingMode": "OneWay"
-				}
+				},
+				"preload": false
 			},
 			"itproject": {
 				"type": "sap.ui.model.json.JSONModel",
 				"settings": {
 					"defaultBindingMode": "OneWay"
-				}
+				},
+				"preload": false
 			}
 		},
 		"routing": {

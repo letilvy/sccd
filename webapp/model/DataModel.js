@@ -5,6 +5,7 @@ sap.ui.define([
 ], function(jQuery, ODataModel, ODataUtils){
 	"use strict";
 
+	/* eslint-disable sap-no-ui5base-prop */
 	var DataModel = ODataModel.extend("sap.support.sccd.DataModel", {
 		constructor: function(sServiceUrl){
 			ODataModel.apply(this, arguments);
@@ -161,4 +162,5 @@ sap.ui.define([
 	};
 
 	return DataModel;
+	/* eslint-enable sap-no-ui5base-prop */
 });
